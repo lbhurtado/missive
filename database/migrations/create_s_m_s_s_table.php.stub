@@ -1,0 +1,44 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+/**
+ * Class CreateSMSsTable.
+ */
+class CreateSMSsTable extends Migration
+{
+    //default table name
+    protected $tablename = 's_m_s_s';
+
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        tap(config('missive.table_names.smss', $this->tablename), function($tablename) {
+            Schema::create($tablename, function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('from');
+                $table->string('to');
+                $table->text('message')->nullable();
+                $table->timestamps();
+            });
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        tap(config('missive.table_names.smss', $this->tablename), function($tablename) {
+            Schema::dropIfExists($tablename);
+        });
+    }
+}

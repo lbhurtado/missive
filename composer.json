@@ -1,0 +1,62 @@
+{
+    "name": "lbhurtado/missive",
+    "description": "Add SMS domain to a Laravel project - models, migrations, jobs, notifications, etc.",
+    "keywords": [
+        "lbhurtado",
+        "missive"
+    ],
+    "homepage": "https://github.com/lbhurtado/missive",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Lester Hurtado",
+            "email": "lester@hurtado.ph",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "illuminate/support": "5.8.*",
+        "lbhurtado/tactician": "dev-master",
+        "prettus/l5-repository": "^2.6"
+    },
+    "require-dev": {
+        "orchestra/testbench": "3.8.*",
+        "phpunit/phpunit": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "LBHurtado\\Missive\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "LBHurtado\\Missive\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LBHurtado\\Missive\\MissiveServiceProvider"
+            ],
+            "aliases": {
+                "Missive": "LBHurtado\\Missive\\MissiveFacade"
+            }
+        }
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../Tactician"
+        }
+    ]
+}
