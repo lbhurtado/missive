@@ -52,11 +52,5 @@
                 "Missive": "LBHurtado\\Missive\\MissiveFacade"
             }
         }
-    },
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../Tactician"
-        }
-    ]
+    }
 }
