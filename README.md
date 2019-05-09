@@ -5,7 +5,7 @@
 [![Quality Score](https://img.shields.io/scrutinizer/g/lbhurtado/missive.svg?style=flat-square)](https://scrutinizer-ci.com/g/lbhurtado/missive)
 [![Total Downloads](https://img.shields.io/packagist/dt/lbhurtado/missive.svg?style=flat-square)](https://packagist.org/packages/lbhurtado/missive)
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+Add SMS domain to a Laravel project - models, migrations, jobs, notifications, etc.
 
 ## Installation
 
@@ -15,10 +15,47 @@ You can install the package via composer:
 composer require lbhurtado/missive
 ```
 
+```bash
+php artisan vendor:publish --provider="LBHurtado\Missive\MissiveServiceProvider"
+php artisan migrate
+```
+
 ## Usage
 
 ``` php
-// Usage description here
+use LBHurtado\Missive\Models\SMS;
+use LBHurtado\Missive\Jobs\CreateSMS;
+use LBHurtado\Missive\Repositories\SMSRepository;
+
+CreateSMS::dispatch($attributes);
+$sms = SMS::first();
+
+$smss = app(SMSRepository::class);
+$sms = $smss->first();
+```
+
+``` php$
+use LBHurtado\Missive\Models\Contact;
+use LBHurtado\Missive\Jobs\CreateContact;
+use LBHurtado\Missive\Repositories\ContactRepository;
+
+CreateContact::dispatch($mobile);
+$contact = Contact::first();
+
+$contacts = app(ContactRepository::class);
+$contact = $contacts->first();
+```
+
+``` php
+use LBHurtado\Missive\Models\Relay;
+use LBHurtado\Missive\Jobs\CreateRelay;
+use LBHurtado\Missive\Repositories\RelayRepository;
+
+CreateRelay::dispatch($mobile);
+$relay = Relay::first();
+
+$relays = app(RelayRepository::class);
+$relay = $relays->first();
 ```
 
 ### Testing
