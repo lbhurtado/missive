@@ -3,10 +3,9 @@
 namespace LBHurtado\Missive\Actions;
 
 use LBHurtado\Tactician\Classes\ActionAbstract;
-use LBHurtado\Missive\Commands\CreateSMSCommand;
-use LBHurtado\Missive\Handlers\CreateSMSHandler;
 use LBHurtado\Tactician\Contracts\ActionInterface;
-use LBHurtado\Missive\Responders\CreateSMSResponder;
+use LBHurtado\Missive\{Commands\CreateSMSCommand,
+    Handlers\CreateSMSHandler, Responders\CreateSMSResponder, Validators\CreateSMSValidator};
 
 class CreateSMSAction extends ActionAbstract implements ActionInterface
 {
@@ -17,7 +16,7 @@ class CreateSMSAction extends ActionAbstract implements ActionInterface
     protected $handler = CreateSMSHandler::class;
 
     protected $middlewares = [
-//        CreateSMSValidator::class,
+        CreateSMSValidator::class,
         CreateSMSResponder::class,
     ];
 

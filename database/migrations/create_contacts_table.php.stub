@@ -9,8 +9,7 @@ use Illuminate\Database\Migrations\Migration;
  */
 class CreateContactsTable extends Migration
 {
-	//default table name
-	protected $tablename = 'contacts';
+	protected $default_table_name = 'contacts';
 
 	/**
 	 * Run the migrations.
@@ -19,8 +18,8 @@ class CreateContactsTable extends Migration
 	 */
 	public function up()
 	{
-		tap(config('missive.table_names.contacts', $this->tablename), function($tablename) {
-			Schema::create($tablename, function(Blueprint $table) {
+		tap(config('missive.table_names.contacts', $this->default_table_name), function($table_name) {
+			Schema::create($table_name, function(Blueprint $table) {
 	            $table->increments('id');
 	            $table->string('mobile')->unique();
 	            $table->string('handle')->nullable()->index();
@@ -36,8 +35,8 @@ class CreateContactsTable extends Migration
 	 */
 	public function down()
 	{
-		tap(config('missive.table_names.contacts', $this->tablename), function($tablename) {
-			Schema::drop($tablename);			
+		tap(config('missive.table_names.contacts', $this->default_table_name), function($table_name) {
+			Schema::drop($table_name);
 		});
 	}
 }

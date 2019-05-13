@@ -9,8 +9,7 @@ use Illuminate\Database\Migrations\Migration;
  */
 class CreateRelaysTable extends Migration
 {
-	//default table name
-	protected $tablename = 'relays';
+	protected $default_table_name = 'relays';
 
 	/**
 	 * Run the migrations.
@@ -19,8 +18,8 @@ class CreateRelaysTable extends Migration
 	 */
 	public function up()
 	{
-		tap(config('missive.table_names.relays', $this->tablename), function($tablename) {
-			Schema::create($tablename, function(Blueprint $table) {
+		tap(config('missive.table_names.relays', $this->default_table_name), function($table_name) {
+			Schema::create($table_name, function(Blueprint $table) {
 	            $table->increments('id');
 	            $table->string('mobile')->unique();
 	            $table->string('handle')->nullable()->index();
@@ -36,8 +35,8 @@ class CreateRelaysTable extends Migration
 	 */
 	public function down()
 	{
-		tap(config('missive.table_names.relays', $this->tablename), function($tablename) {
-			Schema::drop($tablename);			
+		tap(config('missive.table_names.relays', $this->default_table_name), function($table_name) {
+			Schema::drop($table_name);
 		});
 	}
 }

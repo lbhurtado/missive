@@ -1,7 +1,5 @@
 # Changelog
 
-All notable changes to `missive` will be documented in this file
-
-## 1.0.0 - 201X-XX-XX
+## 1.0.0 - 2019-04-XX
 
 - initial release
