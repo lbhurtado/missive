@@ -91,6 +91,8 @@ class MissiveServiceProvider extends ServiceProvider
             return new Missive;
         });
 
+        $this->app->singleton(EventDispatcher::class);
+
         $this->app->bind(SMSRepository::class, SMSRepositoryEloquent::class);
         $this->app->bind(RelayRepository::class, RelayRepositoryEloquent::class);
         $this->app->bind(ContactRepository::class, ContactRepositoryEloquent::class);
