@@ -19,4 +19,9 @@ class Missive
     {
         return $this->sms;
     }
+
+    public function test()
+    {
+        return 'Hello World!';
+    }
 }

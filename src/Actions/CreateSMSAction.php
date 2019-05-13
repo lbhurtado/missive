@@ -2,7 +2,6 @@
 
 namespace LBHurtado\Missive\Actions;
 
-use Missive;
 use LBHurtado\Missive\Models\SMS;
 use LBHurtado\Missive\Jobs\CreateContact;
 use LBHurtado\Tactician\Classes\ActionAbstract;
