@@ -22,7 +22,7 @@ class CreateSMSHandler implements HandlerInterface
             'to' => $command->to,
             'message' => $command->message,
         ]), function ($sms) {
-            Missive::setSMS($sms);
+            \Missive::setSMS($sms);
         });
     }
 }

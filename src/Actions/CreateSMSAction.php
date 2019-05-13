@@ -28,7 +28,7 @@ class CreateSMSAction extends ActionAbstract implements ActionInterface
         $this->getDispatcher()->handle(SMSEvents::CREATED, function (SMSEvent $event) {
             tap($event->getSMS(), function (SMS $sms) {
                 $this->dispatchNow(new CreateContact($sms->from));
-                \Log::info(Missive::getSMS());
+                \Log::info(\Missive::getSMS());
             });
         });
     }
