@@ -90,6 +90,10 @@ class MissiveServiceProvider extends ServiceProvider
             return new Missive;
         });
 
+        $this->app->singleton(Missive::class, function ($app) {
+            return $app->make('missive');
+        });
+
         $this->app->singleton(EventDispatcher::class);
 
         $this->app->bind(SMSRepository::class, SMSRepositoryEloquent::class);
