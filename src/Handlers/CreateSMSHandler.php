@@ -17,10 +17,12 @@ class CreateSMSHandler implements HandlerInterface
 
     public function handle(CommandInterface $command)
     {
-        $this->smss->create([
+        tap($this->smss->create([
             'from' => $command->from,
             'to' => $command->to,
             'message' => $command->message,
-        ]);
+        ]), function ($sms) {
+            Missive::setSMS($sms);
+        });
     }
 }

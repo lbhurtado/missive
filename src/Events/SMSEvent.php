@@ -13,7 +13,6 @@ class SMSEvent extends Event
     {
         $this->sms = $sms;
 
-        \Log::info('SMSEvent::setSMS');
         return $this;
     }
 

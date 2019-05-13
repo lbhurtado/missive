@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: aph
- * Date: 2019-05-09
- * Time: 00:34
- */
 
 namespace LBHurtado\Missive\Resources;
 
