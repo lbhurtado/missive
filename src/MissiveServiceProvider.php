@@ -2,6 +2,7 @@
 
 namespace LBHurtado\Missive;
 
+use Opis\Events\EventDispatcher;
 use LBHurtado\Missive\Models\SMS;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
@@ -10,8 +11,6 @@ use LBHurtado\Missive\Repositories\{SMSRepository, SMSRepositoryEloquent};
 use LBHurtado\Missive\Repositories\{RelayRepository, RelayRepositoryEloquent};
 use LBHurtado\Missive\Repositories\{ContactRepository, ContactRepositoryEloquent};
 use LBHurtado\Missive\Actions\CreateSMSAction;
-
-
 
 class MissiveServiceProvider extends ServiceProvider
 {
