@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fcbc382-ba39-4f0d-a684-c752c9d8f5e6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Events/SMSEvent.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Events/SMSEvents.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Observers/SMSObserver.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Actions/CreateSMSAction.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Actions/CreateSMSAction.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MissiveServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MissiveServiceProvider.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,25 +17,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MissiveServiceProvider.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="474">
-              <caret line="70" column="55" lean-forward="true" selection-start-line="70" selection-start-column="55" selection-end-line="70" selection-end-column="55" />
-              <folding>
-                <element signature="e#37#74#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="119">
+              <caret line="7" column="44" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Actions/CreateSMSAction.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="361">
               <caret line="28" column="55" selection-start-line="28" selection-start-column="55" selection-end-line="28" selection-end-column="55" />
               <folding>
                 <element signature="e#45#92#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Observers/SMSObserver.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+              <folding>
+                <element signature="e#47#79#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -67,7 +75,7 @@
         <entry file="file://$PROJECT_DIR$/src/Events/SMSEvents.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
-              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -76,7 +84,7 @@
         <entry file="file://$PROJECT_DIR$/src/Events/SMSEvent.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
-              <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+              <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
               <folding>
                 <element signature="e#44#66#0#PHP" expanded="true" />
               </folding>
@@ -108,7 +116,6 @@
         <option value="$PROJECT_DIR$/src/Handlers/CreateSMSHandler.php" />
         <option value="$PROJECT_DIR$/src/Resources/CreateSMSResource.php" />
         <option value="$PROJECT_DIR$/src/Responders/CreateSMSResponder.php" />
-        <option value="$PROJECT_DIR$/src/MissiveServiceProvider.php" />
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/database/migrations/create_contacts_table.php.stub" />
         <option value="$PROJECT_DIR$/database/migrations/create_relays_table.php.stub" />
@@ -122,6 +129,8 @@
         <option value="$PROJECT_DIR$/src/Events/SMSEvents.php" />
         <option value="$PROJECT_DIR$/src/Events/SMSEvent.php" />
         <option value="$PROJECT_DIR$/src/Actions/CreateSMSAction.php" />
+        <option value="$PROJECT_DIR$/src/Observers/SMSObserver.php" />
+        <option value="$PROJECT_DIR$/src/MissiveServiceProvider.php" />
       </list>
     </option>
   </component>
@@ -252,13 +261,12 @@
               <item name="Missive" type="b2602c69:ProjectViewProjectNode" />
               <item name="Missive" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Events" type="462c0819:PsiDirectoryNode" />
+              <item name="Jobs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Missive" type="b2602c69:ProjectViewProjectNode" />
               <item name="Missive" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Jobs" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -305,12 +313,12 @@
       <workItem from="1557317877899" duration="540000" />
       <workItem from="1557319857164" duration="13574000" />
       <workItem from="1557398014796" duration="1518000" />
-      <workItem from="1557714550200" duration="6140000" />
+      <workItem from="1557714550200" duration="7386000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21772000" />
+    <option name="totallyTimeSpent" value="23018000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -588,27 +596,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MissiveServiceProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="70" column="55" lean-forward="true" selection-start-line="70" selection-start-column="55" selection-end-line="70" selection-end-column="55" />
-          <folding>
-            <element signature="e#37#74#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Events/SMSEvents.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Events/SMSEvent.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
-          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
           <folding>
             <element signature="e#44#66#0#PHP" expanded="true" />
           </folding>
@@ -639,6 +637,23 @@
           <folding>
             <element signature="e#45#92#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Observers/SMSObserver.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+          <folding>
+            <element signature="e#47#79#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MissiveServiceProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="44" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
         </state>
       </provider>
     </entry>

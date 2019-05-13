@@ -2,13 +2,16 @@
 
 namespace LBHurtado\Missive;
 
+use LBHurtado\Missive\Models\SMS;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use LBHurtado\Missive\Http\Controllers\SMSController;
+use LBHurtado\Missive\Observers\SMSObserver;
 use LBHurtado\Missive\Repositories\{SMSRepository, SMSRepositoryEloquent};
 use LBHurtado\Missive\Repositories\{RelayRepository, RelayRepositoryEloquent};
 use LBHurtado\Missive\Repositories\{ContactRepository, ContactRepositoryEloquent};
 use LBHurtado\Missive\Actions\CreateSMSAction;
+
+
 
 class MissiveServiceProvider extends ServiceProvider
 {
@@ -17,6 +20,8 @@ class MissiveServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        SMS::observe(SMSObserver::class);
+
         /*
          * Optional methods to load your package assets
          */
