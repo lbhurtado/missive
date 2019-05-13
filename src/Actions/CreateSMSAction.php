@@ -4,8 +4,11 @@ namespace LBHurtado\Missive\Actions;
 
 use LBHurtado\Tactician\Classes\ActionAbstract;
 use LBHurtado\Tactician\Contracts\ActionInterface;
-use LBHurtado\Missive\{Commands\CreateSMSCommand,
-    Handlers\CreateSMSHandler, Responders\CreateSMSResponder, Validators\CreateSMSValidator};
+use LBHurtado\Missive\Events\{SMSEvent, SMSEvents};
+use LBHurtado\Missive\{Commands\CreateSMSCommand, Handlers\CreateSMSHandler,
+                Responders\CreateSMSResponder, Validators\CreateSMSValidator};
+use LBHurtado\Missive\Jobs\CreateContact;
+use LBHurtado\Missive\Models\SMS;
 
 class CreateSMSAction extends ActionAbstract implements ActionInterface
 {
@@ -22,6 +25,10 @@ class CreateSMSAction extends ActionAbstract implements ActionInterface
 
     public function setup()
     {
-        // TODO: Implement setup() method.
+        $this->getDispatcher()->handle(SMSEvents::CREATED, function (SMSEvent $event) {
+            tap($event->getSMS(), function (SMS $sms) {
+                $this->dispatchNow(new CreateContact($sms->from));
+            });
+        });
     }
 }
