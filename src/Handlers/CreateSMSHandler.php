@@ -23,10 +23,6 @@ class CreateSMSHandler implements HandlerInterface
             'to' => $command->to,
             'message' => $command->message,
         ]), function ($sms) use ($xxx) {
-            \Log::info('sms follows');
-            \Log::info($sms);
-            \Log::info('xxx follows');
-            \Log::info($xxx);
             Missive::setSMS($sms);
         });
     }

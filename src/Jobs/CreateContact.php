@@ -5,6 +5,7 @@ namespace LBHurtado\Missive\Jobs;
 use Illuminate\Bus\Queueable;
 use Illuminate\Foundation\Bus\Dispatchable;
 use LBHurtado\Missive\Repositories\ContactRepository;
+use LBHurtado\Missive\MissiveFacade as Missive;
 
 class CreateContact
 {
@@ -23,5 +24,6 @@ class CreateContact
     public function handle(ContactRepository $contacts)
     {
         $contacts->updateOrCreate(['mobile' => $this->mobile], ['handle' => $this->handle]);
+        \Log::info(Missive::getSMS());
     }
 }
