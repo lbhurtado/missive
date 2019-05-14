@@ -73,13 +73,6 @@ class MissiveServiceProvider extends ServiceProvider
         Route::prefix('api')
              ->middleware('api')
              ->match(['get', 'post'], 'sms/relay', CreateSMSAction::class);
-
-        $this->app
-            ->when (Missive::class)
-            ->needs(SMSRepository::class)
-            ->give (function () {
-                return app(SMSRepository::class);
-            });
     }
 
     /**
@@ -96,12 +89,12 @@ class MissiveServiceProvider extends ServiceProvider
 
         $this->app->singleton(EventDispatcher::class);
 
-        $this->app->singleton(Missive::class, function ($app) {
-            return $app->make('missive');
+        $this->app->singleton('missive', function () {
+            return new Missive(app(SMSRepository::class));
         });
 
-        $this->app->singleton('missive', function () {
-            return new Missive;
+        $this->app->singleton(Missive::class, function ($app) {
+            return $app->make('missive');
         });
     }
 }

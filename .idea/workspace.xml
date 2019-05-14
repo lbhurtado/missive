@@ -18,8 +18,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MissiveServiceProvider.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="103" column="30" selection-start-line="103" selection-start-column="30" selection-end-line="103" selection-end-column="30" />
+            <state relative-caret-position="446">
+              <caret line="97" column="11" selection-start-line="97" selection-start-column="11" selection-end-line="97" selection-end-column="11" />
               <folding>
                 <element signature="e#37#69#0#PHP" expanded="true" />
               </folding>
@@ -290,12 +290,12 @@
       <workItem from="1557317877899" duration="540000" />
       <workItem from="1557319857164" duration="13574000" />
       <workItem from="1557398014796" duration="1518000" />
-      <workItem from="1557714550200" duration="19644000" />
+      <workItem from="1557714550200" duration="19927000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35276000" />
+    <option name="totallyTimeSpent" value="35559000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -653,8 +653,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MissiveServiceProvider.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="103" column="30" selection-start-line="103" selection-start-column="30" selection-end-line="103" selection-end-column="30" />
+        <state relative-caret-position="446">
+          <caret line="97" column="11" selection-start-line="97" selection-start-column="11" selection-end-line="97" selection-end-column="11" />
           <folding>
             <element signature="e#37#69#0#PHP" expanded="true" />
           </folding>
