@@ -2,7 +2,7 @@
 
 namespace LBHurtado\Missive\Resources;
 
-use LBHurtado\Missive\Missive;
+use LBHurtado\Missive\MissiveFacade as Missive;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class CreateSMSResource extends JsonResource
