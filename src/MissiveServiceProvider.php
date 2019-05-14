@@ -96,7 +96,7 @@ class MissiveServiceProvider extends ServiceProvider
         });
 
         $this->app->singleton('missive', function () {
-            return new Missive;
+            return new Missive(app(SMSRepository::class));
         });
     }
 }
