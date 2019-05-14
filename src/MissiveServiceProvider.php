@@ -85,19 +85,18 @@ class MissiveServiceProvider extends ServiceProvider
         // Automatically apply the package configuration
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'missive');
 
-        // Register the main class to use with the facade
-        $this->app->singleton('missive', function () {
-            return new Missive;
-        });
+        $this->app->bind(SMSRepository::class, SMSRepositoryEloquent::class);
+        $this->app->bind(RelayRepository::class, RelayRepositoryEloquent::class);
+        $this->app->bind(ContactRepository::class, ContactRepositoryEloquent::class);
+
+        $this->app->singleton(EventDispatcher::class);
 
         $this->app->singleton(Missive::class, function ($app) {
             return $app->make('missive');
         });
 
-        $this->app->singleton(EventDispatcher::class);
-
-        $this->app->bind(SMSRepository::class, SMSRepositoryEloquent::class);
-        $this->app->bind(RelayRepository::class, RelayRepositoryEloquent::class);
-        $this->app->bind(ContactRepository::class, ContactRepositoryEloquent::class);
+        $this->app->singleton('missive', function () {
+            return new Missive;
+        });
     }
 }
