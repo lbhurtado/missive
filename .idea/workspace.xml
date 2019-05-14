@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fcbc382-ba39-4f0d-a684-c752c9d8f5e6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MissiveServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MissiveServiceProvider.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,7 +19,7 @@
         <entry file="file://$PROJECT_DIR$/src/MissiveServiceProvider.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="397">
-              <caret line="28" column="51" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
+              <caret line="28" column="44" selection-start-line="28" selection-start-column="44" selection-end-line="28" selection-end-column="44" />
               <folding>
                 <element signature="e#37#69#0#PHP" expanded="true" />
               </folding>
@@ -239,6 +237,11 @@
             <path>
               <item name="Missive" type="b2602c69:ProjectViewProjectNode" />
               <item name="Missive" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Missive" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Missive" type="462c0819:PsiDirectoryNode" />
               <item name="tests" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -292,12 +295,12 @@
       <workItem from="1557319857164" duration="13574000" />
       <workItem from="1557398014796" duration="1518000" />
       <workItem from="1557714550200" duration="22360000" />
-      <workItem from="1557838948450" duration="2726000" />
+      <workItem from="1557838948450" duration="2868000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40718000" />
+    <option name="totallyTimeSpent" value="40860000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -677,7 +680,7 @@
     <entry file="file://$PROJECT_DIR$/src/MissiveServiceProvider.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="397">
-          <caret line="28" column="51" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
+          <caret line="28" column="44" selection-start-line="28" selection-start-column="44" selection-end-line="28" selection-end-column="44" />
           <folding>
             <element signature="e#37#69#0#PHP" expanded="true" />
           </folding>
