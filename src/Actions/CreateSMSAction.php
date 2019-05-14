@@ -12,8 +12,6 @@ use LBHurtado\Missive\{Commands\CreateSMSCommand, Handlers\CreateSMSHandler,
 
 class CreateSMSAction extends ActionAbstract implements ActionInterface
 {
-//    protected $fields = ['from', 'to', 'message'];//TODO: add secret field
-
     protected $command = CreateSMSCommand::class;
 
     protected $handler = CreateSMSHandler::class;
