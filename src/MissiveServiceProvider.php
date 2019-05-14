@@ -4,13 +4,12 @@ namespace LBHurtado\Missive;
 
 use Opis\Events\EventDispatcher;
 use LBHurtado\Missive\Models\SMS;
-use Illuminate\Support\Facades\Route;
+
 use Illuminate\Support\ServiceProvider;
 use LBHurtado\Missive\Observers\SMSObserver;
 use LBHurtado\Missive\Repositories\{SMSRepository, SMSRepositoryEloquent};
 use LBHurtado\Missive\Repositories\{RelayRepository, RelayRepositoryEloquent};
 use LBHurtado\Missive\Repositories\{ContactRepository, ContactRepositoryEloquent};
-use LBHurtado\Missive\Actions\CreateSMSAction;
 
 class MissiveServiceProvider extends ServiceProvider
 {
@@ -27,7 +26,7 @@ class MissiveServiceProvider extends ServiceProvider
         // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'missive');
         // $this->loadViewsFrom(__DIR__.'/../resources/views', 'missive');
         // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
+         $this->loadRoutesFrom(__DIR__.'/routes/api.php');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
@@ -70,9 +69,7 @@ class MissiveServiceProvider extends ServiceProvider
             // $this->commands([]);
         }
 
-        Route::prefix('api')
-             ->middleware('api')
-             ->match(['get', 'post'], 'sms/relay', CreateSMSAction::class);
+
     }
 
     /**
