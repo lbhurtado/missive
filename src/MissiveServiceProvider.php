@@ -4,7 +4,6 @@ namespace LBHurtado\Missive;
 
 use Opis\Events\EventDispatcher;
 use LBHurtado\Missive\Models\SMS;
-
 use Illuminate\Support\ServiceProvider;
 use LBHurtado\Missive\Observers\SMSObserver;
 use LBHurtado\Missive\Repositories\{SMSRepository, SMSRepositoryEloquent};
@@ -25,7 +24,6 @@ class MissiveServiceProvider extends ServiceProvider
          */
         // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'missive');
         // $this->loadViewsFrom(__DIR__.'/../resources/views', 'missive');
-        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
          $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
 
         if ($this->app->runningInConsole()) {
