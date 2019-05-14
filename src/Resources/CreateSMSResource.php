@@ -9,11 +9,6 @@ class CreateSMSResource extends JsonResource
 {
     public function toArray($request)
     {
-        return [
-            'id' => Missive::getSMS()->id,
-            'from' => $this->from,
-            'to' => $this->to,
-            'message' => $this->message,
-        ];
+        return Missive::getSMS()->toArray();
     }
 }
