@@ -2,6 +2,7 @@
 
 namespace LBHurtado\Missive\Handlers;
 
+use LBHurtado\Missive\MissiveFacade as Missive;
 use LBHurtado\Missive\Repositories\SMSRepository;
 use LBHurtado\Tactician\Contracts\CommandInterface;
 use LBHurtado\Tactician\Contracts\HandlerInterface;
