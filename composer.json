@@ -49,7 +49,7 @@
                 "LBHurtado\\Missive\\MissiveServiceProvider"
             ],
             "aliases": {
-                "Missive": "LBHurtado\\Missive\\MissiveFacade"
+                "Missive": "LBHurtado\\Missive\\Facades\\Missive"
             }
         }
     }

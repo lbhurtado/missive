@@ -1,13 +1,13 @@
 <?php
 
-namespace LBHurtado\Missive;
+namespace LBHurtado\Missive\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
  * @see \LBHurtado\Missive\Skeleton\SkeletonClass
  */
-class MissiveFacade extends Facade
+class Missive extends Facade
 {
     /**
      * Get the registered name of the component.
