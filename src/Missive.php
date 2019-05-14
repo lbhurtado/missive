@@ -3,25 +3,26 @@
 namespace LBHurtado\Missive;
 
 use LBHurtado\Missive\Models\SMS;
+use LBHurtado\Missive\Repositories\SMSRepository;
 
 class Missive
 {
+    protected $smss;
+
     protected $sms;
 
-    public function setSMS(SMS $sms)
+    public function __construct(SMSRepository $smss)
     {
-        $this->sms = $sms;
-
-        return $this;
+        $this->smss = $smss;
     }
 
-    public function getSMS()
+    public function create($attributes = [])
+    {
+        $this->sms = $this->smss->create($attributes);
+    }
+
+    public function getSMS(): SMS
     {
         return $this->sms;
-    }
-
-    public function test()
-    {
-        return 'Hello World!';
     }
 }
