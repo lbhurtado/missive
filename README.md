@@ -58,6 +58,23 @@ $relays = app(RelayRepository::class);
 $relay = $relays->first();
 ```
 
+``` bash
+curl -X POST \
+  http://laravel.app/api/sms/relay \
+  -H 'Accept: */*' \
+  -H 'Cache-Control: no-cache' \
+  -H 'Connection: keep-alive' \
+  -H 'Content-Type: application/json' \
+  -H 'Host: laravel.app' \
+  -H 'content-length: 134' \
+  -d '{
+    "secret": "CFAWG4KCE44XWACTZZX24Z7LPW99XTWT",
+    "from": "+639171234567",
+    "to": "+639187654321",
+    "message": "test message"
+}'
+```
+
 ### Testing
 
 ``` bash
