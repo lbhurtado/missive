@@ -58,7 +58,8 @@ class MissiveServiceProvider extends ServiceProvider
         $this->app->bind(ContactRepository::class, ContactRepositoryEloquent::class);
         $this->app->singleton(EventDispatcher::class);
         $this->app->singleton('missive.contact', function () {
-            return config('missive.classes.models.contact', Contact::class);
+            $class = config('missive.classes.models.contact', Contact::class);
+            return new $class;
         });
         $this->app->singleton('missive', function () {
             return new Missive(app(SMSRepository::class));

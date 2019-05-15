@@ -22,11 +22,11 @@ class SMS extends Model
 
     public function origin(): BelongsTo
     {
-        return $this->belongsTo(config('missive.classes.contact', Contact::class), 'from', 'mobile');
+        return $this->belongsTo(config('missive.classes.models.contact', Contact::class), 'from', 'mobile');
     }
 
     public function destination(): BelongsTo
     {
-    	return $this->belongsTo(config('missive.classes.relay', Relay::class), 'to', 'mobile');
+    	return $this->belongsTo(config('missive.classes.models.relay', Relay::class), 'to', 'mobile');
     }
 }
