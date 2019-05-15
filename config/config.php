@@ -6,4 +6,9 @@ return [
 		'contacts' => 'contacts',
 		'relays'   => 'relays'
 	],
+    'classes' => [
+        'commands' => [
+            'sms.create' => \LBHurtado\Missive\Commands\CreateSMSCommand::class
+        ],
+    ]
 ];

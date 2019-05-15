@@ -12,7 +12,7 @@ use LBHurtado\Missive\{Commands\CreateSMSCommand, Handlers\CreateSMSHandler,
 
 class CreateSMSAction extends ActionAbstract implements ActionInterface
 {
-    protected $command = CreateSMSCommand::class;
+//    protected $command = CreateSMSCommand::class;
 
     protected $handler = CreateSMSHandler::class;
 
@@ -28,5 +28,10 @@ class CreateSMSAction extends ActionAbstract implements ActionInterface
                 $this->dispatch(new CreateContact($sms->from));
             });
         });
+    }
+
+    public function getCommand():string
+    {
+        return config('missive.classes.sms.create');
     }
 }
