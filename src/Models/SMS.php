@@ -9,11 +9,11 @@ class SMS extends SMSAbstract
 {
     public function origin(): BelongsTo
     {
-        return $this->belongsTo(config('missive.classes.models.contact', Contact::class), 'from', 'mobile');
+        return $this->belongsTo(get_class(app('missive.contact')), 'from', 'mobile');
     }
 
     public function destination(): BelongsTo
     {
-    	return $this->belongsTo(config('missive.classes.models.relay', Relay::class), 'to', 'mobile');
+    	return $this->belongsTo(get_class(app('missive.relay')), 'to', 'mobile');
     }
 }

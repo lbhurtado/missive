@@ -21,7 +21,7 @@ class ContactRepositoryEloquent extends BaseRepository implements ContactReposit
      */
     public function model()
     {
-        return config('missive.classes.models.contact', Contact::class);
+        return get_class(app('missive.contact'));
     }
 
     /**

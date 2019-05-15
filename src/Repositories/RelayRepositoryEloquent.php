@@ -21,7 +21,7 @@ class RelayRepositoryEloquent extends BaseRepository implements RelayRepository
      */
     public function model()
     {
-        return config('missive.classes.models.relay', Relay::class);
+        return get_class(app('missive.relay'));
     }
 
     /**
