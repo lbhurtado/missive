@@ -3,10 +3,9 @@
 namespace LBHurtado\Missive;
 
 use Opis\Events\EventDispatcher;
-use LBHurtado\Missive\Models\SMS;
-use LBHurtado\Missive\Models\Contact;
 use Illuminate\Support\ServiceProvider;
 use LBHurtado\Missive\Observers\SMSObserver;
+use LBHurtado\Missive\Models\{SMS, Contact, Relay};
 use LBHurtado\Missive\Repositories\{SMSRepository, SMSRepositoryEloquent};
 use LBHurtado\Missive\Repositories\{RelayRepository, RelayRepositoryEloquent};
 use LBHurtado\Missive\Repositories\{ContactRepository, ContactRepositoryEloquent};
@@ -51,19 +50,52 @@ class MissiveServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->registerConfigs();
+        $this->registerRepositories();
+        $this->registerModels();
+        $this->registerFacades();
+        $this->registerClasses();
+    }
+
+    protected function registerConfigs()
+    {
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'missive');
         $this->mergeConfigFrom(__DIR__.'/../config/tactician.fields.php', 'tactician.fields');
+    }
+
+    protected function registerRepositories()
+    {
         $this->app->bind(SMSRepository::class, SMSRepositoryEloquent::class);
         $this->app->bind(RelayRepository::class, RelayRepositoryEloquent::class);
         $this->app->bind(ContactRepository::class, ContactRepositoryEloquent::class);
-        $this->app->singleton(EventDispatcher::class);
+    }
+
+    protected function registerModels()
+    {
         $this->app->singleton('missive.contact', function () {
             $class = config('missive.classes.models.contact', Contact::class);
             return new $class;
         });
+        $this->app->singleton('missive.relay', function () {
+            $class = config('missive.classes.models.relay', Relay::class);
+            return new $class;
+        });
+        $this->app->singleton('missive.sms', function () {
+            $class = config('missive.classes.models.sms', Relay::class);
+            return $class;
+        });
+    }
+
+    protected function registerFacades()
+    {
         $this->app->singleton('missive', function () {
             return new Missive(app(SMSRepository::class));
         });
+    }
+
+    protected function registerClasses()
+    {
+        $this->app->singleton(EventDispatcher::class);
         $this->app->singleton(Missive::class, function ($app) {
             return $app->make('missive');
         });
