@@ -25,9 +25,10 @@ class CreateSMSCommand implements CommandInterface
     public function __construct(Request $request)
     {
         $this->request = $request;
+        foreach ($request as $property => $value) {
+            $this->{$property} = $value;
+        }
     }
-
-    //TODO: get attributes from request
 
     public function getProperties():array
     {
@@ -36,6 +37,9 @@ class CreateSMSCommand implements CommandInterface
 //            'to' => $this->to,
 //            'message' => $this->message,
 //        ];
-        return $this->request->only(config('tactician.fields'));
+        $attributes = $this->request->only(config('tactician.fields'));
+
+        \Log::info($attributes);
+        return $attributes;
     }
 }
