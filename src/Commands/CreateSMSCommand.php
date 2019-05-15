@@ -13,11 +13,11 @@ class CreateSMSCommand implements CommandInterface
 
     public $message;
 
-    public function __construct(...$fields)
+    public function __construct(array $data)
     {
-        $this->from = $fields[0];
-        $this->to = $fields[1];
-        $this->message = $fields[2];
+        $this->from = $data[0];
+        $this->to = $data[1];
+        $this->message = $data[2];
     }
 
 //    protected $request;
