@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'from',
-    'to',
-    'message'
+    'from'    => 'required',
+    'to'      => 'required',
+    'message' => 'string|max:500'
 ];
