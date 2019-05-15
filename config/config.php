@@ -8,7 +8,9 @@ return [
 	],
     'classes' => [
         'commands' => [
-            'sms.create' => \LBHurtado\Missive\Commands\CreateSMSCommand::class
-        ],
+            'sms' => [
+                'create' => \LBHurtado\Missive\Commands\CreateSMSCommand::class
+            ]
+        ]
     ]
 ];
