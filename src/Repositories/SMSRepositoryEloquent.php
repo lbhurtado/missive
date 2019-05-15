@@ -21,9 +21,7 @@ class SMSRepositoryEloquent extends BaseRepository implements SMSRepository
      */
     public function model()
     {
-        return app('missive.sms');
-
-//        return SMS::class;
+        return config('missive.classes.models.sms', SMS::class);
     }
 
     /**
