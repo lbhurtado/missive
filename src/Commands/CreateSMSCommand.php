@@ -7,17 +7,21 @@ use LBHurtado\Tactician\Contracts\CommandInterface;
 
 class CreateSMSCommand implements CommandInterface
 {
-    public $from;
-
-    public $to;
-
-    public $message;
+//    public $from;
+//
+//    public $to;
+//
+//    public $message;
 
     public $data;
 
     public function __construct(array $data)
     {
         $this->data = $data;
+
+        foreach ($data as $property => $value) {
+            $this->{$property} = $value;
+        }
 //        $this->from = $data[0];
 //        $this->to = $data[1];
 //        $this->message = $data[2];
