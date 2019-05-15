@@ -4,6 +4,7 @@ namespace LBHurtado\Missive;
 
 use Opis\Events\EventDispatcher;
 use LBHurtado\Missive\Models\SMS;
+use LBHurtado\Missive\Models\Contact;
 use Illuminate\Support\ServiceProvider;
 use LBHurtado\Missive\Observers\SMSObserver;
 use LBHurtado\Missive\Repositories\{SMSRepository, SMSRepositoryEloquent};
@@ -57,7 +58,7 @@ class MissiveServiceProvider extends ServiceProvider
         $this->app->bind(ContactRepository::class, ContactRepositoryEloquent::class);
         $this->app->singleton(EventDispatcher::class);
         $this->app->singleton('missive.contact', function () {
-            return new config('missive.classes.contact', Contact::class);
+            return config('missive.classes.models.contact', Contact::class);
         });
         $this->app->singleton('missive', function () {
             return new Missive(app(SMSRepository::class));
