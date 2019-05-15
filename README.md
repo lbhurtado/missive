@@ -15,9 +15,39 @@ You can install the package via composer:
 composer require lbhurtado/missive
 ```
 
+publish vendor files:
 ```bash
 php artisan vendor:publish --provider="LBHurtado\Missive\MissiveServiceProvider"
 php artisan migrate
+```
+
+customize the tables and classes:
+```php
+[
+	'table_names' => [
+		'smss'     => 's_m_s_s',
+		'contacts' => 'contacts',
+		'relays'   => 'relays'
+	],
+    'classes' => [
+        'commands' => [
+            'sms' => [
+                'create' => \LBHurtado\Missive\Commands\CreateSMSCommand::class
+            ]
+        ],
+        'handlers' => [
+            'sms' => [
+                'create' => \LBHurtado\Missive\Handlers\CreateSMSHandler::class
+            ]
+        ],
+        'middlewares' => [
+            'sms' => [
+                \LBHurtado\Missive\Validators\CreateSMSValidator::class,
+                \LBHurtado\Missive\Responders\CreateSMSResponder::class
+            ]
+        ]
+    ]
+]
 ```
 
 ## Usage
