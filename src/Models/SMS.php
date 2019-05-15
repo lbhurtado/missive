@@ -2,24 +2,11 @@
 
 namespace LBHurtado\Missive\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use LBHurtado\Missive\Classes\SMSAbstract;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class SMS extends Model
-{   
-    protected $fillable = [
-    	'from',
-    	'to',
-    	'message',
-    ];
-
-    public function __construct(array $attributes = [])
-    {
-        parent::__construct($attributes);
-
-        $this->setTable(config('missive.table_names.smss'));
-    }
-
+class SMS extends SMSAbstract
+{
     public function origin(): BelongsTo
     {
         return $this->belongsTo(config('missive.classes.models.contact', Contact::class), 'from', 'mobile');

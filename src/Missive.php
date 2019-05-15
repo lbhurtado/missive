@@ -2,7 +2,7 @@
 
 namespace LBHurtado\Missive;
 
-use LBHurtado\Missive\Models\SMS;
+use LBHurtado\Missive\Classes\SMSAbstract;
 use LBHurtado\Missive\Repositories\SMSRepository;
 
 class Missive
@@ -21,7 +21,7 @@ class Missive
         $this->sms = $this->smss->create($attributes);
     }
 
-    public function getSMS(): SMS
+    public function getSMS(): SMSAbstract
     {
         return $this->sms;
     }
