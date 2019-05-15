@@ -13,11 +13,14 @@ class CreateSMSCommand implements CommandInterface
 
     public $message;
 
+    public $data;
+
     public function __construct(array $data)
     {
-        $this->from = $data[0];
-        $this->to = $data[1];
-        $this->message = $data[2];
+        $this->data = $data;
+//        $this->from = $data[0];
+//        $this->to = $data[1];
+//        $this->message = $data[2];
     }
 
 //    protected $request;
@@ -32,11 +35,13 @@ class CreateSMSCommand implements CommandInterface
 
     public function getProperties():array
     {
-        return [
-            'from' => $this->from,
-            'to' => $this->to,
-            'message' => $this->message,
-        ];
+        return $this->data;
+
+//        return [
+//            'from' => $this->from,
+//            'to' => $this->to,
+//            'message' => $this->message,
+//        ];
 //        $attributes = $this->request->only(config('tactician.fields'));
 //
 //        \Log::info($attributes);
