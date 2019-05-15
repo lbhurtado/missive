@@ -4,9 +4,9 @@ namespace LBHurtado\Missive;
 
 use Opis\Events\EventDispatcher;
 use Illuminate\Support\ServiceProvider;
-use LBHurtado\Missive\Observers\SMSObserver;
 use LBHurtado\Missive\Models\{SMS, Contact, Relay};
 use LBHurtado\Missive\Repositories\{SMSRepository, SMSRepositoryEloquent};
+use LBHurtado\Missive\Observers\{SMSObserver, ContactObserver, RelayObserver};
 use LBHurtado\Missive\Repositories\{RelayRepository, RelayRepositoryEloquent};
 use LBHurtado\Missive\Repositories\{ContactRepository, ContactRepositoryEloquent};
 
@@ -17,11 +17,10 @@ class MissiveServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        app('missive.sms')::observe(SMSObserver::class);
-
-        $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
+        $this->observeModels();
         $this->registerConfigs();
         $this->publishMigrations();
+        $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
     }
 
     /**
@@ -36,6 +35,13 @@ class MissiveServiceProvider extends ServiceProvider
         $this->registerClasses();
     }
 
+    protected function observeModels()
+    {
+        app('missive.sms')::observe(SMSObserver::class);
+        app('missive.relay')::observe(RelayObserver::class);
+        app('missive.contact')::observe(ContactObserver::class);
+    }
+
     protected function publishConfigs()
     {
         if ($this->app->runningInConsole()) {
@@ -48,6 +54,11 @@ class MissiveServiceProvider extends ServiceProvider
     protected function publishMigrations()
     {
         if ($this->app->runningInConsole()) {
+            if (! class_exists(CreateRelaysTable::class)) {
+                $this->publishes([
+                    __DIR__.'/../database/migrations/create_relays_table.php.stub' => database_path('migrations/'.date('Y_m_d_His', time()).'_create_relays_table.php'),
+                ], 'migrations');
+            }
             if (! class_exists(CreateSMSsTable::class)) {
                 $this->publishes([
                     __DIR__.'/../database/migrations/create_s_m_s_s_table.php.stub' => database_path('migrations/'.date('Y_m_d_His', time()).'_create_s_m_s_s_table.php'),
@@ -56,11 +67,6 @@ class MissiveServiceProvider extends ServiceProvider
             if (! class_exists(CreateContactsTable::class)) {
                 $this->publishes([
                     __DIR__.'/../database/migrations/create_contacts_table.php.stub' => database_path('migrations/'.date('Y_m_d_His', time()).'_create_contacts_table.php'),
-                ], 'migrations');
-            }
-            if (! class_exists(CreateRelaysTable::class)) {
-                $this->publishes([
-                    __DIR__.'/../database/migrations/create_relays_table.php.stub' => database_path('migrations/'.date('Y_m_d_His', time()).'_create_relays_table.php'),
                 ], 'migrations');
             }
         }
@@ -81,16 +87,16 @@ class MissiveServiceProvider extends ServiceProvider
 
     protected function registerModels()
     {
-        $this->app->singleton('missive.contact', function () {
-            $class = config('missive.classes.models.contact', Contact::class);
+        $this->app->singleton('missive.sms', function () {
+            $class = config('missive.classes.models.sms', SMS::class);
             return new $class;
         });
         $this->app->singleton('missive.relay', function () {
             $class = config('missive.classes.models.relay', Relay::class);
             return new $class;
         });
-        $this->app->singleton('missive.sms', function () {
-            $class = config('missive.classes.models.sms', SMS::class);
+        $this->app->singleton('missive.contact', function () {
+            $class = config('missive.classes.models.contact', Contact::class);
             return new $class;
         });
     }
