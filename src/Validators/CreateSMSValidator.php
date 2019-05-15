@@ -8,15 +8,9 @@ use LBHurtado\Missive\Exceptions\CreateSMSValidationException;
 
 class CreateSMSValidator implements Middleware
 {
-    protected $rules = [
-        'from'    => 'required',
-        'to'      => 'required',
-        'message' => 'string|max:500'
-    ];
-
     public function execute($command, callable $next)
     {
-        $validator = Validator::make((array) $command, $this->rules);
+        $validator = Validator::make((array) $command, config('tactician.fields'));
 
         if ($validator->fails()) {
             throw new CreateSMSValidationException($command, $validator);
