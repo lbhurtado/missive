@@ -82,7 +82,7 @@ class MissiveServiceProvider extends ServiceProvider
         });
         $this->app->singleton('missive.sms', function () {
             $class = config('missive.classes.models.sms', Relay::class);
-            return $class;
+            return new $class;
         });
     }
 
