@@ -32,6 +32,6 @@ class CreateSMSAction extends ActionAbstract implements ActionInterface
 
     public function getCommand():string
     {
-        return config('missive.classes.sms.create');
+        return config('missive.classes.commands.sms.create');
     }
 }
