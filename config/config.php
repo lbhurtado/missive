@@ -11,6 +11,17 @@ return [
             'sms' => [
                 'create' => \LBHurtado\Missive\Commands\CreateSMSCommand::class
             ]
+        ],
+        'handlers' => [
+            'sms' => [
+                'create' => \LBHurtado\Missive\Handlers\CreateSMSHandler::class
+            ]
+        ],
+        'middlewares' => [
+            'sms' => [
+                \LBHurtado\Missive\Validators\CreateSMSValidator::class,
+                \LBHurtado\Missive\Responders\CreateSMSResponder::class
+            ]
         ]
     ]
 ];
