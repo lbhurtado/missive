@@ -17,7 +17,9 @@ class MissiveServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        SMS::observe(SMSObserver::class);
+//        SMS::observe(SMSObserver::class);
+        config('missive.classes.relay', SMS::class)::observe(SMSObserver::class);
+
         $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
         if ($this->app->runningInConsole()) {
             $this->publishes([

@@ -3,8 +3,6 @@
 namespace LBHurtado\Missive\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use LBHurtado\Missive\Traits\HasAContact;
-use LBHurtado\Missive\Contracts\Contactable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class SMS extends Model
@@ -24,11 +22,11 @@ class SMS extends Model
 
     public function origin(): BelongsTo
     {
-        return $this->belongsTo(Contact::class, 'from', 'mobile');
+        return $this->belongsTo(config('missive.classes.contact', Contact::class), 'from', 'mobile');
     }
 
     public function destination(): BelongsTo
     {
-    	return $this->belongsTo(Relay::class, 'to', 'mobile');
+    	return $this->belongsTo(config('missive.classes.relay', Relay::class), 'to', 'mobile');
     }
 }

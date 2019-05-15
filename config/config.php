@@ -7,6 +7,11 @@ return [
 		'relays'   => 'relays'
 	],
     'classes' => [
+        'models' => [
+            'contact' => \LBHurtado\Missive\Models\Contact::class,
+            'relay' => \LBHurtado\Missive\Models\Relay::class,
+            'sms' => \LBHurtado\Missive\Models\SMS::class
+        ],
         'commands' => [
             'sms' => [
                 'create' => \LBHurtado\Missive\Commands\CreateSMSCommand::class
