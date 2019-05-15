@@ -12,9 +12,6 @@ use LBHurtado\Missive\Repositories\{ContactRepository, ContactRepositoryEloquent
 
 class MissiveServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap the application services.
-     */
     public function boot()
     {
         $this->observeModels();
@@ -23,9 +20,6 @@ class MissiveServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
     }
 
-    /**
-     * Register the application services.
-     */
     public function register()
     {
         $this->registerConfigs();
