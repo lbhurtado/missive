@@ -4,8 +4,8 @@ namespace LBHurtado\Missive;
 
 use Opis\Events\EventDispatcher;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Database\Eloquent\Factory;
 use LBHurtado\Missive\Models\{SMS, Contact, Relay};
+use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 use LBHurtado\Missive\Repositories\{SMSRepository, SMSRepositoryEloquent};
 use LBHurtado\Missive\Observers\{SMSObserver, ContactObserver, RelayObserver};
 use LBHurtado\Missive\Repositories\{RelayRepository, RelayRepositoryEloquent};
@@ -19,7 +19,7 @@ class MissiveServiceProvider extends ServiceProvider
         $this->registerConfigs();
         $this->publishMigrations();
         $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
-        $this->app->make(Factory::class)->load(__DIR__ . '/../database/factories');
+        $this->app->make(EloquentFactory::class)->load(__DIR__ . '/../database/factories');
     }
 
     public function register()
