@@ -17,11 +17,6 @@ class CreateSMSHandler implements HandlerInterface
 
     public function handle(CommandInterface $command)
     {
-//        $this->missive->createSMS([
-//            'from' => $command->from,
-//            'to' => $command->to,
-//            'message' => $command->message,
-//        ]);
         $this->missive->createSMS($command->getProperties());
     }
 }

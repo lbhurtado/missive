@@ -49,6 +49,7 @@ class MissiveServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'missive');
+        $this->mergeConfigFrom(__DIR__.'/../config/tactician.fields.php', 'tactician.fields');
         $this->app->bind(SMSRepository::class, SMSRepositoryEloquent::class);
         $this->app->bind(RelayRepository::class, RelayRepositoryEloquent::class);
         $this->app->bind(ContactRepository::class, ContactRepositoryEloquent::class);
