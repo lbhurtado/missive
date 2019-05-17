@@ -29,6 +29,6 @@ class SMSRepositoryTest extends TestCase
         app(SMSRepository::class)->create($attributes = compact('from', 'to', 'message'));
 
         /*** assert ***/
-        $this->assertDatabaseHas(config('missive.table_names.smss'), compact($attributes));
+        $this->assertDatabaseHas(config('missive.table_names.smss'), $attributes);
     }
 }
