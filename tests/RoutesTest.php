@@ -2,6 +2,8 @@
 
 namespace LBHurtado\Missive\Tests;
 
+use Illuminate\Support\Arr;
+
 class RoutesTest extends TestCase
 {
     /** @test */
@@ -17,5 +19,7 @@ class RoutesTest extends TestCase
         /*** assert ***/
         $crawler->assertStatus(200)->assertJson(['data' => $attributes]);
         $this->assertDatabaseHas('s_m_s_s', $attributes);
+        $this->assertDatabaseHas('contacts', ['mobile' => $from]);
+        $this->assertDatabaseHas('relays', ['mobile' => $to]);
     }
 }

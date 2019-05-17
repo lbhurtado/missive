@@ -2,8 +2,6 @@
 
 namespace LBHurtado\Missive\Tests;
 
-use Illuminate\Support\Arr;
-use LBHurtado\Missive\Models\SMS;
 use LBHurtado\Missive\Repositories\{SMSRepository, SMSRepositoryEloquent};
 
 class SMSRepositoryTest extends TestCase
