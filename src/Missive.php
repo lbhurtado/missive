@@ -18,7 +18,7 @@ class Missive
 
     public function createSMS($attributes = [])
     {
-        $this->sms = $this->smss->create($attributes);
+        return $this->sms = $this->smss->create($attributes);
     }
 
     public function getSMS(): SMSAbstract

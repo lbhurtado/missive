@@ -22,7 +22,7 @@
         "prettus/l5-repository": "^2.6"
     },
     "require-dev": {
-        "orchestra/testbench": "3.8.*",
+        "orchestra/testbench-browser-kit": "^3.5",
         "phpunit/phpunit": "^7.0"
     },
     "autoload": {
