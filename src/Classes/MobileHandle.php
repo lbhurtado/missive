@@ -18,29 +18,5 @@ abstract class MobileHandle extends Model
         $this->setTable(config("missive.table_names.{$this->getTableIndex()}"));
     }
 
-    public function getMobile()
-    {
-    	return $this->mobile;
-    }
-
-    public function setMobile($mobile)
-    {
-    	$this->mobile = $mobile;
-
-    	return $this;
-    }
-
-    public function getHandle()
-    {
-    	return $this->handle;
-    }
-
-    public function setHandle($handle)
-    {
-    	$this->handle = $handle;
-
-    	return $this;
-    }
-
     abstract protected function getTableIndex(): string;
 }

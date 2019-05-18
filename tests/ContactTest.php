@@ -77,14 +77,16 @@ class ContactTest extends TestCase
     /** @test */
     public function contact_creation_has_event()
     {
+        /*** arrange ***/
+        $mobile = '+639171234567';
         $dispatcher = app(EventDispatcher::class);
 
         /*** assert ***/
-        $dispatcher->handle(ContactEvents::CREATED, function (ContactEvent $event) {
-            $this->assertTrue(true);
+        $dispatcher->handle(ContactEvents::CREATED, function (ContactEvent $event) use ($mobile) {
+            $this->assertEquals($mobile, $event->getContact()->mobile);
         });
 
         /*** act ***/
-        factory(Contact::class)->create();
+        factory(Contact::class)->create(compact('mobile'));
     }
 }

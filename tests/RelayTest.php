@@ -77,14 +77,16 @@ class RelayTest extends TestCase
     /** @test */
     public function relay_creation_has_event()
     {
+        /*** arrange ***/
+        $mobile = '+639171234567';
         $dispatcher = app(EventDispatcher::class);
 
         /*** assert ***/
-        $dispatcher->handle(RelayEvents::CREATED, function (RelayEvent $event) {
-            $this->assertTrue(true);
+        $dispatcher->handle(RelayEvents::CREATED, function (RelayEvent $event) use ($mobile) {
+            $this->assertEquals($mobile, $event->getRelay()->mobile);
         });
 
         /*** act ***/
-        factory(Relay::class)->create();
+        factory(Relay::class)->create(compact('mobile'));
     }
 }
