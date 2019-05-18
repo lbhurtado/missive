@@ -5,7 +5,7 @@ namespace LBHurtado\Missive\Tests;
 class RoutesTest extends TestCase
 {
     /** @test */
-    public function relay_sms_can_be_accessed()
+    public function sms_relay_route_can_be_accessed()
     {
         /*** arrange ***/
         $from = '+639171234567'; $to = '+639187654321'; $message = 'Test Messages';
