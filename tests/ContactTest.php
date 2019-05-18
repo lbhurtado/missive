@@ -3,12 +3,12 @@
 namespace LBHurtado\Missive\Tests;
 
 use Illuminate\Support\Arr;
-use LBHurtado\Missive\Events\ContactEvent;
-use LBHurtado\Missive\Events\ContactEvents;
 use Opis\Events\EventDispatcher;
-use LBHurtado\Missive\Classes\MobileHandle;
 use LBHurtado\Missive\Models\Contact;
 use Illuminate\Database\QueryException;
+use LBHurtado\Missive\Events\ContactEvent;
+use LBHurtado\Missive\Events\ContactEvents;
+use LBHurtado\Missive\Classes\MobileHandle;
 
 class ContactTest extends TestCase
 {
