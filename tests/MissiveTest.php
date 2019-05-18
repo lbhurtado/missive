@@ -11,8 +11,11 @@ use LBHurtado\Missive\Commands\CreateSMSCommand;
 
 class MissiveTest extends TestCase
 {
-    /** @var Mockery\Mock */
+    /** @var LBHurtado\Missive\Missive */
     protected $missive;
+
+    /** @var Mockery\Mock */
+    protected $mockedMissive;
 
     /** @var LBHurtado\Missive\Handlers\CreateSMSHandler */
     protected $handler;
@@ -24,8 +27,9 @@ class MissiveTest extends TestCase
     {
         parent::setUp();
 
-        $this->missive = Mockery::mock(Missive::class);
-        $this->handler = new CreateSMSHandler($this->missive);
+        $this->missive = app(Missive::class);
+        $this->mockedMissive = Mockery::mock(Missive::class);
+        $this->handler = new CreateSMSHandler($this->mockedMissive);
     }
 
     public function tearDown(): void
@@ -34,16 +38,32 @@ class MissiveTest extends TestCase
 
         parent::tearDown();
     }
-
     /** @test */
-    public function missive_can_create_sms()
+    public function missive_can_create_sms_and_read_sms_as_property()
     {
         /*** arrange ***/
         $from = '+639171234567'; $to = '+639187654321'; $message = 'Test Messages';
         $attributes = compact('from', 'to', 'message');
+
+        /*** act ***/
+
+        $sms = $this->missive->createSMS($attributes);
+
+        /*** assert ***/
+        $this->assertSame($sms->id, SMS::where($attributes)->first()->id);
+        $this->assertSame($sms->id, $this->missive->getSMS()->id);
+    }
+
+    /** @test */
+    public function mock_missive_can_create_sms()
+    {
+        /*** arrange ***/
+        $from = '+639171234567'; $to = '+639187654321'; $message = 'Test Messages';
+        $attributes = compact('from', 'to', 'message');
+
         $this->command = new CreateSMSCommand($attributes);
 
-        $this->missive
+        $this->mockedMissive
             ->shouldReceive('createSMS')
             ->once()
             ->andReturn($sms = factory(SMS::class)->create($attributes));

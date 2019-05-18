@@ -2,8 +2,6 @@
 
 namespace LBHurtado\Missive\Tests;
 
-use Illuminate\Support\Arr;
-
 class RoutesTest extends TestCase
 {
     /** @test */
