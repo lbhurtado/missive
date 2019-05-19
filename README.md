@@ -1,4 +1,4 @@
-# Description
+# lbhurtado/missive
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/lbhurtado/missive.svg?style=flat-square)](https://packagist.org/packages/lbhurtado/missive)
 [![Build Status](https://img.shields.io/travis/lbhurtado/missive/master.svg?style=flat-square)](https://travis-ci.org/lbhurtado/missive)

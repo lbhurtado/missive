@@ -3,7 +3,9 @@
     "description": "Add SMS domain to a Laravel project - models, migrations, jobs, notifications, etc.",
     "keywords": [
         "lbhurtado",
-        "missive"
+        "missive",
+        "sms",
+        "contacts"
     ],
     "homepage": "https://github.com/lbhurtado/missive",
     "license": "MIT",
@@ -18,7 +20,7 @@
     "require": {
         "php": "^7.1",
         "illuminate/support": "5.8.*",
-        "lbhurtado/tactician": "dev-master",
+        "lbhurtado/tactician": "^1.0",
         "prettus/l5-repository": "^2.6"
     },
     "require-dev": {
