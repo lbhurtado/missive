@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: aph
- * Date: 2019-05-13
- * Time: 11:15
- */
 
 namespace LBHurtado\Missive\Exceptions;
 
