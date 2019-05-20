@@ -6,7 +6,7 @@ use LBHurtado\Missive\Classes\SMSAbstract;
 use LBHurtado\Tactician\Classes\ActionAbstract;
 use LBHurtado\Tactician\Contracts\ActionInterface;
 use LBHurtado\Missive\Events\{SMSEvent, SMSEvents};
-use LBHurtado\Missive\Jobs\{CreateContact, CreateRelay};
+use LBHurtado\Missive\Jobs\{CreateContact, CreateRelay, ProcessSMS};
 use LBHurtado\Missive\{Commands\CreateSMSCommand, Handlers\CreateSMSHandler,
                 Responders\CreateSMSResponder, Validators\CreateSMSValidator};
 
@@ -27,6 +27,7 @@ class CreateSMSAction extends ActionAbstract implements ActionInterface
             tap($event->getSMS(), function (SMSAbstract $sms) {
                 $this->dispatch(new CreateContact($sms->from));
                 $this->dispatch(new CreateRelay($sms->to));
+                $this->dispatch(new ProcessSMS($sms));
             });
         });
     }

@@ -46,9 +46,13 @@ class Missive
         return $this;
     }
 
-    public function execute(string $path = null)
+    public function process(SMSAbstract $sms)
     {
-        $path = $path ?? $this->getSMS()->getMessage();
+        return $this->execute($sms->getMessage());
+    }
+
+    public function execute(string $path)
+    {
         $ordered_routes = array_reverse($this->routes, true);
         foreach ($ordered_routes as $regex => $action) {
             if ($this->builder->matches($regex, $path)) {

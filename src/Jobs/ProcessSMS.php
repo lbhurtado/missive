@@ -23,6 +23,6 @@ class ProcessSMS implements ShouldQueue
 
     public function handle(Missive $missive)
     {
-        $missive->processSMS($this->sms);
+        $missive->process($this->sms);
     }
 }
