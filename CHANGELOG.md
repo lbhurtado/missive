@@ -1,5 +1,5 @@
 # Changelog
 
-## 1.0.0 - 2019-04-XX
+## 1.0.0 - 2019-05-19
 
 - initial release

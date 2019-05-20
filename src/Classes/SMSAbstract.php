@@ -18,4 +18,9 @@ abstract class SMSAbstract extends Model
 
         $this->setTable(config('missive.table_names.smss'));
     }
+
+    public function getMessage(): string
+    {
+        return trim($this->message);
+    }
 }

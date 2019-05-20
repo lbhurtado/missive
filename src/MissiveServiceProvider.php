@@ -18,8 +18,10 @@ class MissiveServiceProvider extends ServiceProvider
         $this->observeModels();
         $this->registerConfigs();
         $this->publishMigrations();
+        $this->publishRoutes();
         $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
         $this->app->make(EloquentFactory::class)->load(__DIR__ . '/../database/factories');
+        $this->map();
     }
 
     public function register()
@@ -68,6 +70,15 @@ class MissiveServiceProvider extends ServiceProvider
         }
     }
 
+    protected function publishRoutes()
+    {
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__.'/../routes/sms.php' => base_path('routes/sms.php'),
+            ], 'routes');
+        }
+    }
+
     protected function registerConfigs()
     {
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'missive');
@@ -110,5 +121,12 @@ class MissiveServiceProvider extends ServiceProvider
         $this->app->singleton(Missive::class, function ($app) {
             return $app->make('missive');
         });
+    }
+
+    public function map()
+    {
+        $file = base_path('routes/txtcmdr.php');
+
+        if (file_exists($file)) include $file;
     }
 }
