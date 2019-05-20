@@ -50,6 +50,13 @@ customize the tables and classes:
 ]
 ```
 
+customize the routes in routes/sms.php:
+```php
+$router->register('LOG {message}', function (string $path, array $values) {
+    \Log::info($values['message']);
+});
+```
+
 ## Usage
 
 ``` php
