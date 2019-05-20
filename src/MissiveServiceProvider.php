@@ -125,7 +125,7 @@ class MissiveServiceProvider extends ServiceProvider
 
     public function map()
     {
-        $file = base_path('routes/txtcmdr.php');
+        $file = base_path('routes/sms.php');
 
         if (file_exists($file)) include $file;
     }
