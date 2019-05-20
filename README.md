@@ -5,7 +5,7 @@
 [![Quality Score](https://img.shields.io/scrutinizer/g/lbhurtado/missive.svg?style=flat-square)](https://scrutinizer-ci.com/g/lbhurtado/missive)
 [![Total Downloads](https://img.shields.io/packagist/dt/lbhurtado/missive.svg?style=flat-square)](https://packagist.org/packages/lbhurtado/missive)
 
-Add SMS domain to a Laravel project - models, migrations, jobs, notifications, etc.
+Add SMS domain to a Laravel project - route, models, migrations, events, jobs, actions, etc.
 
 ## Installation
 

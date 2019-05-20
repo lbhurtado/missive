@@ -33,6 +33,13 @@ class Missive
         return $this->sms = $this->smss->create($attributes);
     }
 
+    protected function setSMS(SMSAbstract $sms)
+    {
+        $this->sms = $sms;
+
+        return $this;
+    }
+
     public function getSMS(): SMSAbstract
     {
         return $this->sms;
@@ -48,7 +55,9 @@ class Missive
 
     public function process(SMSAbstract $sms)
     {
-        return $this->execute($sms->getMessage());
+        $this->setSMS($sms);
+
+        return $this->execute($this->getSMS()->getMessage());
     }
 
     public function execute(string $path)
