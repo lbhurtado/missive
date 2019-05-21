@@ -124,7 +124,7 @@ class MissiveServiceProvider extends ServiceProvider
         $this->app->singleton(Router::class);
         $this->app->singleton(EventDispatcher::class);
         $this->app->singleton(Missive::class, function ($app) {
-            return $app->make('missive');
+            return $app->make('missive')->getInstance();
         });
         $this->app->singleton(Router::class, function ($app) {
             return $app->make('missive:router');

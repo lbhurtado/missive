@@ -34,4 +34,20 @@ class Missive
     {
         return $this->sms;
     }
+
+     public static function instance()
+     {
+         return app(Missive::class)->getInstance();
+     }
+
+     public function getInstance()
+     {
+         static $instance = null;
+
+         if (null === $instance) {
+             $instance = resolve('missive');
+         }
+
+         return $instance;
+     }
 }
