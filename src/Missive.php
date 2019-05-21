@@ -7,9 +7,6 @@ use LBHurtado\Missive\Repositories\SMSRepository;
 
 class Missive
 {
-    /** @var LBHurtado\Missive\Missive */
-    private static $instance;
-
     /** @var \LBHurtado\Missive\Repositories\SMSRepository */
     protected $smss;
 
@@ -21,15 +18,7 @@ class Missive
         $this->smss = $smss;
     }
 
-    public function createSMS($attributes = [])
-    {
-        $this->sms = $this->smss->create($attributes);
-        app()->instance(SMSAbstract::class, $this->sms);
-
-        return $this->sms;
-    }
-
-    protected function setSMS(SMSAbstract $sms)
+    public function setSMS(SMSAbstract $sms)
     {
         $this->sms = $sms;
 
@@ -40,13 +29,4 @@ class Missive
     {
         return $this->sms;
     }
-
-     public function getInstance()
-     {
-         if ( ! isset( self::$instance ) ) {
-             self::$instance = app(Missive::class);
-         }
-
-         return self::$instance;
-     }
 }

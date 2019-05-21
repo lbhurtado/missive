@@ -2,8 +2,8 @@
 
 namespace LBHurtado\Missive\Routing;
 
-use LBHurtado\Missive\Missive;
 use Opis\Pattern\RegexBuilder;
+use LBHurtado\Missive\Missive;
 use LBHurtado\Missive\Classes\SMSAbstract;
 
 class Router
@@ -15,7 +15,7 @@ class Router
     protected $routes = [];
 
     /** @var \LBHurtado\Missive\Missive */
-    protected $missive;
+    public $missive;
 
     /** @var \LBHurtado\Missive\Classes\SMSAbstract */
     protected $sms;
@@ -27,6 +27,7 @@ class Router
     public function __construct(Missive $missive)
     {
         $this->missive = $missive;
+
         $this->builder = new RegexBuilder([
             RegexBuilder::REGEX_MODIFIER => 'i'
         ]);

@@ -43,15 +43,14 @@ class MissiveTest extends TestCase
     }
 
     /** @test */
-    public function missive_can_create_sms_and_read_sms_as_property()
+    public function missive_can_set_sms_and_read_sms_as_property()
     {
         /*** arrange ***/
         $from = '+639171234567'; $to = '+639187654321'; $message = 'Test Messages';
         $attributes = compact('from', 'to', 'message');
 
         /*** act ***/
-
-        $sms = $this->missive->createSMS($attributes);
+        $this->missive->setSMS($sms = factory(SMS::class)->create($attributes));
 
         /*** assert ***/
         $this->assertSame($sms->id, SMS::where($attributes)->first()->id);

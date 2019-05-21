@@ -15,6 +15,7 @@ class RoutesTest extends TestCase
         $crawler = $this->post('api/sms/relay', $attributes);
 
         /*** assert ***/
+
         $crawler->assertStatus(200)->assertJson(['data' => $attributes]);
         $this->assertDatabaseHas('s_m_s_s', $attributes);
         $this->assertDatabaseHas('contacts', ['mobile' => $from]);
