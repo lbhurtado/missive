@@ -111,11 +111,11 @@ class MissiveServiceProvider extends ServiceProvider
 
     protected function registerFacades()
     {
-        $this->app->singleton('missive:router', function () {
-            return new Router();
-        });
         $this->app->singleton('missive', function () {
             return new Missive(app(SMSRepository::class));
+        });
+        $this->app->singleton('missive:router', function () {
+            return new Router(app(Missive::class));
         });
     }
 
@@ -123,11 +123,11 @@ class MissiveServiceProvider extends ServiceProvider
     {
         $this->app->singleton(Router::class);
         $this->app->singleton(EventDispatcher::class);
-        $this->app->singleton(Router::class, function ($app) {
-            return $app->make('missive:router');
-        });
         $this->app->singleton(Missive::class, function ($app) {
             return $app->make('missive');
+        });
+        $this->app->singleton(Router::class, function ($app) {
+            return $app->make('missive:router');
         });
     }
 
