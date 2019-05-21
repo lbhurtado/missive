@@ -2,14 +2,10 @@
 
 namespace LBHurtado\Missive\Tests;
 
-use LBHurtado\Missive\Classes\SMSAbstract;
 use Mockery;
 use Illuminate\Support\Arr;
 use LBHurtado\Missive\Missive;
 use LBHurtado\Missive\Models\SMS;
-//use LBHurtado\Missive\Facades\Missive as MissiveFacade;
-use LBHurtado\Missive\Handlers\CreateSMSHandler;
-use LBHurtado\Missive\Commands\CreateSMSCommand;
 use LBHurtado\Missive\Routing\Router;
 
 class MissiveTest extends TestCase
@@ -36,8 +32,6 @@ class MissiveTest extends TestCase
         $this->missive = app(Missive::class);
         $this->mockedMissive = Mockery::mock(Missive::class);
         $this->router = new Router($this->mockedMissive);
-//        $this->handler = new CreateSMSHandler($this->mockedMissive);
-//        $this->handler = new CreateSMSHandler();
     }
 
     public function tearDown(): void
@@ -63,7 +57,7 @@ class MissiveTest extends TestCase
     }
 
     /** @test */
-    public function mock_missive_can_set_and_get_sms()
+    public function mock_missive_should_set_and_get_sms_when_router_is_processing()
     {
         /*** arrange ***/
         $from = '+639171234567'; $to = '+639187654321'; $message = 'Test Messages';

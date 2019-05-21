@@ -14,16 +14,14 @@ use LBHurtado\Missive\Repositories\{ContactRepository, ContactRepositoryEloquent
 
 class MissiveServiceProvider extends ServiceProvider
 {
-    const PACKAGE_ROUTE_API = __DIR__.'/../routes/api.php';
-
     const APPLICATION_ROUTE_SMS = 'routes/sms.php';
-
+    const PACKAGE_ROUTE_API = __DIR__.'/../routes/api.php';
+    const PACKAGE_ROUTE_SMS = __DIR__.'/../routes/sms.php';
     const PACKAGE_FACTORY_DIR = __DIR__ . '/../database/factories';
-
-    const PACKAGE_RELAYS_TABLE_MIGRATION_STUB = __DIR__.'/../database/migrations/create_relays_table.php.stub';
-
+    const PACKAGE_MISSIVE_CONFIG = __DIR__.'/../config/config.php';
+    const PACKAGE_TACTICIAN_FIELDS_CONFIG = __DIR__.'/../config/tactician.fields.php';
     const PACKAGE_SMSS_TABLE_MIGRATION_STUB = __DIR__.'/../database/migrations/create_s_m_s_s_table.php.stub';
-
+    const PACKAGE_RELAYS_TABLE_MIGRATION_STUB = __DIR__.'/../database/migrations/create_relays_table.php.stub';
     const PACKAGE_CONTACTS_TABLE_MIGRATION_STUB = __DIR__.'/../database/migrations/create_contacts_table.php.stub';
 
     public function boot()
@@ -86,15 +84,15 @@ class MissiveServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../routes/sms.php' => base_path('routes/sms.php'),
+                self::PACKAGE_ROUTE_SMS => base_path(self::APPLICATION_ROUTE_SMS),
             ], 'routes');
         }
     }
 
     protected function registerConfigs()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'missive');
-        $this->mergeConfigFrom(__DIR__.'/../config/tactician.fields.php', 'tactician.fields');
+        $this->mergeConfigFrom(self::PACKAGE_MISSIVE_CONFIG, 'missive');
+        $this->mergeConfigFrom(self::PACKAGE_TACTICIAN_FIELDS_CONFIG, 'tactician.fields');
     }
 
     protected function registerRepositories()

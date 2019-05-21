@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fcbc382-ba39-4f0d-a684-c752c9d8f5e6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Jobs/ProcessSMS.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Jobs/ProcessSMS.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Missive.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Missive.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Models/SMS.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/SMS.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Routing/Router.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Routing/Router.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MissiveServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MissiveServiceProvider.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/MissiveTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/MissiveTest.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,7 +16,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Actions/CreateSMSAction.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
@@ -40,11 +37,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MissiveServiceProvider.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-42">
-              <caret line="78" column="26" selection-start-line="78" selection-start-column="26" selection-end-line="78" selection-end-column="26" />
+            <state relative-caret-position="255">
+              <caret line="23" column="111" selection-start-line="23" selection-start-column="111" selection-end-line="23" selection-end-column="111" />
               <folding>
                 <element signature="e#1439#1678#0#PHP" />
               </folding>
@@ -88,10 +85,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/MissiveTest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="65" column="49" selection-start-line="65" selection-start-column="49" selection-end-line="65" selection-end-column="49" />
+            <state relative-caret-position="1003">
+              <caret line="59" column="81" selection-start-line="59" selection-start-column="81" selection-end-line="59" selection-end-column="81" />
               <folding>
-                <element signature="e#43#85#0#PHP" expanded="true" />
+                <element signature="e#43#55#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -164,12 +161,12 @@
         <option value="$PROJECT_DIR$/tests/RoutesTest.php" />
         <option value="$PROJECT_DIR$/src/Resources/CreateSMSResource.php" />
         <option value="$PROJECT_DIR$/src/Actions/CreateSMSAction.php" />
-        <option value="$PROJECT_DIR$/src/MissiveServiceProvider.php" />
         <option value="$PROJECT_DIR$/src/Models/SMS.php" />
-        <option value="$PROJECT_DIR$/tests/MissiveTest.php" />
         <option value="$PROJECT_DIR$/src/Jobs/ProcessSMS.php" />
         <option value="$PROJECT_DIR$/src/Routing/Router.php" />
         <option value="$PROJECT_DIR$/src/Missive.php" />
+        <option value="$PROJECT_DIR$/tests/MissiveTest.php" />
+        <option value="$PROJECT_DIR$/src/MissiveServiceProvider.php" />
       </list>
     </option>
   </component>
@@ -351,12 +348,12 @@
       <workItem from="1558072079357" duration="37927000" />
       <workItem from="1558362943687" duration="10522000" />
       <workItem from="1558411446863" duration="11443000" />
-      <workItem from="1558439736575" duration="11218000" />
+      <workItem from="1558439736575" duration="12447000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="151368000" />
+    <option name="totallyTimeSpent" value="152597000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -726,22 +723,63 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/MissiveTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="65" column="49" selection-start-line="65" selection-start-column="49" selection-end-line="65" selection-end-column="49" />
-          <folding>
-            <element signature="e#43#85#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Jobs/CreateContact.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
           <folding>
             <element signature="e#42#71#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Bus/DispatchesJobs.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Actions/CreateSMSAction.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="29" column="41" lean-forward="true" selection-start-line="29" selection-start-column="41" selection-end-line="29" selection-end-column="41" />
+          <folding>
+            <element signature="e#45#87#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Jobs/ProcessSMS.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="25" column="30" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/MissiveTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1003">
+          <caret line="59" column="81" selection-start-line="59" selection-start-column="81" selection-end-line="59" selection-end-column="81" />
+          <folding>
+            <element signature="e#43#55#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Missive.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Routing/Router.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="52" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
+          <folding>
+            <element signature="e#45#75#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -758,51 +796,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MissiveServiceProvider.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-42">
-          <caret line="78" column="26" selection-start-line="78" selection-start-column="26" selection-end-line="78" selection-end-column="26" />
+        <state relative-caret-position="255">
+          <caret line="23" column="111" selection-start-line="23" selection-start-column="111" selection-end-line="23" selection-end-column="111" />
           <folding>
             <element signature="e#1439#1678#0#PHP" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Bus/DispatchesJobs.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Routing/Router.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="52" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
-          <folding>
-            <element signature="e#45#75#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Missive.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Jobs/ProcessSMS.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="25" column="30" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Actions/CreateSMSAction.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="29" column="41" lean-forward="true" selection-start-line="29" selection-start-column="41" selection-end-line="29" selection-end-column="41" />
-          <folding>
-            <element signature="e#45#87#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
