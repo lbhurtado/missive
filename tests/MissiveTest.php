@@ -2,6 +2,7 @@
 
 namespace LBHurtado\Missive\Tests;
 
+use LBHurtado\Missive\Classes\SMSAbstract;
 use Mockery;
 use Illuminate\Support\Arr;
 use LBHurtado\Missive\Missive;

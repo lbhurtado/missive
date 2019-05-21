@@ -23,7 +23,10 @@ class Missive
 
     public function createSMS($attributes = [])
     {
-        return $this->sms = $this->smss->create($attributes);
+        $this->sms = $this->smss->create($attributes);
+        app()->instance(SMSAbstract::class, $this->sms);
+
+        return $this->sms;
     }
 
     protected function setSMS(SMSAbstract $sms)
