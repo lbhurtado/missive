@@ -71,9 +71,13 @@ class Router
      */
     public function process(SMSAbstract $sms)
     {
-        return $this->setSMS($sms)->execute(
-            $this->getSMS()->getMessage()
-        );
+        $this->missive->setSMS($sms);
+
+        return $this->execute($this->missive->getSMS()->getMessage());
+
+//        return $this->setSMS($sms)->execute(
+//            $this->getSMS()->getMessage()
+//        );
     }
 
     /**
