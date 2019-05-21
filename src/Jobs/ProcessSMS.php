@@ -3,7 +3,7 @@
 namespace LBHurtado\Missive\Jobs;
 
 use Illuminate\Bus\Queueable;
-use LBHurtado\Missive\Missive;
+use LBHurtado\Missive\Routing\Router;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use LBHurtado\Missive\Classes\SMSAbstract;
@@ -21,8 +21,8 @@ class ProcessSMS implements ShouldQueue
         $this->sms = $sms;
     }
 
-    public function handle(Missive $missive)
+    public function handle(Router $router)
     {
-        $missive->process($this->sms);
+        $router->process($this->sms);
     }
 }

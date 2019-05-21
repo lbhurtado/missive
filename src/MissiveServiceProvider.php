@@ -3,6 +3,7 @@
 namespace LBHurtado\Missive;
 
 use Opis\Events\EventDispatcher;
+use LBHurtado\Missive\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use LBHurtado\Missive\Models\{SMS, Contact, Relay};
 use Illuminate\Database\Eloquent\Factory as EloquentFactory;
@@ -117,6 +118,7 @@ class MissiveServiceProvider extends ServiceProvider
 
     protected function registerClasses()
     {
+        $this->app->singleton(Router::class);
         $this->app->singleton(EventDispatcher::class);
         $this->app->singleton(Missive::class, function ($app) {
             return $app->make('missive');
