@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fcbc382-ba39-4f0d-a684-c752c9d8f5e6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Routing/Router.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Jobs/ProcessSMS.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Jobs/ProcessSMS.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Missive.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Missive.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MissiveServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MissiveServiceProvider.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,11 +36,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MissiveServiceProvider.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="120" column="36" selection-start-line="120" selection-start-column="36" selection-end-line="120" selection-end-column="36" />
+            <state relative-caret-position="356">
+              <caret line="126" column="45" selection-start-line="126" selection-start-column="45" selection-end-line="126" selection-end-column="45" />
               <folding>
                 <element signature="e#37#69#0#PHP" expanded="true" />
               </folding>
@@ -52,10 +48,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Missive.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
+            <state relative-caret-position="-103">
               <caret line="10" selection-start-line="10" selection-start-column="2" selection-end-line="14" selection-end-column="29" />
               <folding>
                 <element signature="e#70#112#0#PHP" expanded="true" />
@@ -154,10 +150,10 @@
         <option value="$PROJECT_DIR$/src/Actions/CreateSMSAction.php" />
         <option value="$PROJECT_DIR$/CHANGELOG.md" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/src/MissiveServiceProvider.php" />
         <option value="$PROJECT_DIR$/src/Jobs/ProcessSMS.php" />
         <option value="$PROJECT_DIR$/src/Routing/Router.php" />
         <option value="$PROJECT_DIR$/src/Missive.php" />
+        <option value="$PROJECT_DIR$/src/MissiveServiceProvider.php" />
       </list>
     </option>
   </component>
@@ -331,12 +327,12 @@
       <workItem from="1558012645261" duration="8081000" />
       <workItem from="1558072079357" duration="37927000" />
       <workItem from="1558362943687" duration="10522000" />
-      <workItem from="1558411446863" duration="2372000" />
+      <workItem from="1558411446863" duration="2889000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="131079000" />
+    <option name="totallyTimeSpent" value="131596000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -360,11 +356,11 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info active="true" anchor="bottom" id="TODO" order="6" visible="true" weight="0.32738853" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32738853" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32894737" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32738853" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32738853" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -758,16 +754,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MissiveServiceProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="120" column="36" selection-start-line="120" selection-start-column="36" selection-end-line="120" selection-end-column="36" />
-          <folding>
-            <element signature="e#37#69#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Jobs/ProcessSMS.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="361">
@@ -790,10 +776,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Missive.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
+        <state relative-caret-position="-103">
           <caret line="10" selection-start-line="10" selection-start-column="2" selection-end-line="14" selection-end-column="29" />
           <folding>
             <element signature="e#70#112#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MissiveServiceProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="126" column="45" selection-start-line="126" selection-start-column="45" selection-end-line="126" selection-end-column="45" />
+          <folding>
+            <element signature="e#37#69#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
