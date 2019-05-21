@@ -54,8 +54,8 @@ class MissiveServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../config/config.php' => config_path('missive.php'),
-            ], 'config');
+                self::PACKAGE_MISSIVE_CONFIG => config_path('missive.php'),
+            ], 'missive-config');
         }
     }
 
@@ -65,17 +65,17 @@ class MissiveServiceProvider extends ServiceProvider
             if (! class_exists(CreateRelaysTable::class)) {
                 $this->publishes([
                     self::PACKAGE_RELAYS_TABLE_MIGRATION_STUB => database_path('migrations/'.date('Y_m_d_His', time()).'_create_relays_table.php'),
-                ], 'migrations');
+                ], 'missive-migrations');
             }
             if (! class_exists(CreateSMSsTable::class)) {
                 $this->publishes([
                     self::PACKAGE_SMSS_TABLE_MIGRATION_STUB => database_path('migrations/'.date('Y_m_d_His', time()).'_create_s_m_s_s_table.php'),
-                ], 'migrations');
+                ], 'missive-migrations');
             }
             if (! class_exists(CreateContactsTable::class)) {
                 $this->publishes([
                     self::PACKAGE_CONTACTS_TABLE_MIGRATION_STUB => database_path('migrations/'.date('Y_m_d_His', time()).'_create_contacts_table.php'),
-                ], 'migrations');
+                ], 'missive-migrations');
             }
         }
     }
@@ -85,7 +85,7 @@ class MissiveServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 self::PACKAGE_ROUTE_SMS => base_path(self::APPLICATION_ROUTE_SMS),
-            ], 'routes');
+            ], 'missive-routes');
         }
     }
 
