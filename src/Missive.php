@@ -7,16 +7,16 @@ use LBHurtado\Missive\Repositories\SMSRepository;
 
 class Missive
 {
-    /** @var \LBHurtado\Missive\Repositories\SMSRepository */
-    protected $smss;
+//    /** @var \LBHurtado\Missive\Repositories\SMSRepository */
+//    protected $smss;
 
     /** @var  \LBHurtado\Missive\Classes\SMSAbstract */
     protected $sms;
 
-    public function __construct(SMSRepository $smss)
-    {
-        $this->smss = $smss;
-    }
+//    public function __construct(SMSRepository $smss)
+//    {
+//        $this->smss = $smss;
+//    }
 
     public function setSMS(SMSAbstract $sms)
     {

@@ -112,7 +112,7 @@ class MissiveServiceProvider extends ServiceProvider
     protected function registerFacades()
     {
         $this->app->singleton('missive', function () {
-            return (new Missive(app(SMSRepository::class)));
+            return new Missive;
         });
         $this->app->singleton('missive:router', function () {
             return new Router(app(Missive::class));
