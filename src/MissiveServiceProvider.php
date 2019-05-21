@@ -23,8 +23,6 @@ class MissiveServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
         $this->app->make(EloquentFactory::class)->load(__DIR__ . '/../database/factories');
         $this->map();
-        $missive = app(Missive::class);
-        $this->app->instance(Missive::class, $missive);
     }
 
     public function register()
