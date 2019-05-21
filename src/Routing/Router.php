@@ -17,9 +17,6 @@ class Router
     /** @var \LBHurtado\Missive\Missive */
     public $missive;
 
-    /** @var \LBHurtado\Missive\Classes\SMSAbstract */
-    protected $sms;
-
     /**
      * Router constructor.
      * @param Missive $missive
@@ -31,25 +28,6 @@ class Router
         $this->builder = new RegexBuilder([
             RegexBuilder::REGEX_MODIFIER => 'i'
         ]);
-    }
-
-    /**
-     * @param SMSAbstract $sms
-     * @return $this
-     */
-    protected function setSMS(SMSAbstract $sms)
-    {
-        $this->sms = $sms;
-
-        return $this;
-    }
-
-    /**
-     * @return SMSAbstract
-     */
-    public function getSMS(): SMSAbstract
-    {
-        return $this->sms;
     }
 
     /**
@@ -74,10 +52,6 @@ class Router
         $this->missive->setSMS($sms);
 
         return $this->execute($this->missive->getSMS()->getMessage());
-
-//        return $this->setSMS($sms)->execute(
-//            $this->getSMS()->getMessage()
-//        );
     }
 
     /**
