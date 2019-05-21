@@ -2,7 +2,6 @@
 
 namespace LBHurtado\Missive\Actions;
 
-use LBHurtado\Missive\Facades\Missive;
 use LBHurtado\Missive\Classes\SMSAbstract;
 use LBHurtado\Tactician\Classes\ActionAbstract;
 use LBHurtado\Tactician\Contracts\ActionInterface;
@@ -26,9 +25,6 @@ class CreateSMSAction extends ActionAbstract implements ActionInterface
     {
         $this->getDispatcher()->handle(SMSEvents::CREATED, function (SMSEvent $event) {
             tap($event->getSMS(), function (SMSAbstract $sms) {
-
-//                Missive::setSMS($sms);
-
                 $this->dispatch(new CreateContact($sms->from));
                 $this->dispatch(new CreateRelay($sms->to));
                 $this->dispatch(new ProcessSMS($sms));
