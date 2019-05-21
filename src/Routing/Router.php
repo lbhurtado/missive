@@ -19,6 +19,8 @@ class Router
 
     /**
      * Router constructor.
+     * Capture the Missive instance from the container.
+     * Instantiate RegexBuilder that ignores casing.
      * @param Missive $missive
      */
     public function __construct(Missive $missive)
@@ -44,6 +46,8 @@ class Router
     }
 
     /**
+     * Sets the SMS property of Missive before
+     * executing the contents of them sms
      * @param SMSAbstract $sms
      * @return mixed
      */

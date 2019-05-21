@@ -14,13 +14,23 @@ class ProcessSMS implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
+    /**
+     * @var SMSAbstract
+     */
     protected $sms;
 
+    /**
+     * ProcessSMS constructor.
+     * @param SMSAbstract $sms
+     */
     public function __construct(SMSAbstract $sms)
     {
         $this->sms = $sms;
     }
 
+    /**
+     * @param Router $router
+     */
     public function handle(Router $router)
     {
         $router->process($this->sms);

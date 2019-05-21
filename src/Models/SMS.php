@@ -16,6 +16,4 @@ class SMS extends SMSAbstract
     {
     	return $this->belongsTo(get_class(app('missive.relay')), 'to', 'mobile');
     }
-
-    //TODO: create getInstance here
 }
