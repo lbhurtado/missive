@@ -9,9 +9,9 @@ use Illuminate\Database\Migrations\Migration;
  */
 class CreateAirtimesTable extends Migration
 {
-    protected $default_master_table_name = 'airtimes';
+    protected $default_airtimes_table_name = 'airtimes';
 
-    protected $default_transaction_table_name = 'airtime_contact';
+    protected $default_airtime_contact_name = 'airtime_contact';
 
     /**
      * Run the migrations.
@@ -20,7 +20,7 @@ class CreateAirtimesTable extends Migration
      */
     public function up()
     {
-        tap(config('missive.table_names.airtimes', $this->default_master_table_name), function($table_name) {
+        tap(config('missive.table_names.airtimes', $this->default_airtimes_table_name), function($table_name) {
             Schema::create($table_name, function(Blueprint $table) {
                 $table->increments('id');
                 $table->string('key')->unique();
@@ -29,13 +29,16 @@ class CreateAirtimesTable extends Migration
             });
         });
 
-        Schema::create('airtime_contact', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('airtime_id')->unsigned()->index();
-            $table->integer('contact_id')->unsigned()->index();
-            $table->timestamps();
-            $table->foreign('airtime_id')->references('id')->on('airtimes')->onDelete('cascade');
-            $table->foreign('contact_id')->references('id')->on('contacts')->onDelete('cascade');
+        tap(config('missive.table_names.airtime_contact', $this->default_airtime_contact_name), function($table_name) {
+            Schema::create($table_name, function (Blueprint $table) {
+                $table->increments('id');
+                $table->integer('contact_id')->unsigned()->index();
+                $table->integer('airtime_id')->unsigned()->index();
+                $table->tinyInteger('qty')->unsigned()->default(1);
+                $table->timestamps();
+                $table->foreign('airtime_id')->references('id')->on('airtimes')->onDelete('cascade');
+                $table->foreign('contact_id')->references('id')->on('contacts')->onDelete('cascade');
+            });
         });
     }
 
@@ -46,9 +49,11 @@ class CreateAirtimesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('airtime_contact');
+        tap(config('missive.table_names.airtime_contact', $this->default_airtime_contact_name), function($table_name) {
+            Schema::dropIfExists($table_name);
+        });
 
-        tap(config('missive.table_names.airtimes', $this->default_master_table_name), function($table_name) {
+        tap(config('missive.table_names.airtimes', $this->default_airtimes_table_name), function($table_name) {
             Schema::drop($table_name);
         });
     }

@@ -4,11 +4,11 @@ namespace LBHurtado\Missive\Tests;
 
 use Illuminate\Support\Arr;
 use Opis\Events\EventDispatcher;
-use LBHurtado\Missive\Models\Airtime;
 use Illuminate\Database\QueryException;
 use LBHurtado\Missive\Events\AirtimeEvent;
 use LBHurtado\Missive\Events\AirtimeEvents;
-use LBHurtado\Missive\Classes\MobileHandle;
+use LBHurtado\Missive\Pivots\AirtimeContact;
+use LBHurtado\Missive\Models\{Airtime, Contact};
 
 class AirtimeTest extends TestCase
 {
@@ -68,7 +68,7 @@ class AirtimeTest extends TestCase
     public function airtime_creation_has_event()
     {
         /*** arrange ***/
-        $key = 'incoming-sms'; $credits = '0.01';
+        $key = 'incoming-sms';
         $dispatcher = app(EventDispatcher::class);
 
         /*** assert ***/
@@ -78,5 +78,22 @@ class AirtimeTest extends TestCase
 
         /*** act ***/
         factory(Airtime::class)->create(compact('key'));
+    }
+
+    //TODO: put this on a separate test, may in airtime_contac test or in contact test
+    /** @test */
+    public function contact_has_airtime_contact_as_pivot_for_airtimes()
+    {
+        /*** arrange ***/
+        $contact = factory(Contact::class)->create();
+        $airtime = factory(Airtime::class)->create(); $qty = 2;
+
+        /*** act ***/
+        $pivot = AirtimeContact::make(compact('qty'));
+        $contact->addAirtime($airtime, $pivot);
+
+        /*** assert ***/
+        $this->assertTrue($contact->airtimes()->first()->is($airtime));
+        $this->assertEquals($qty, $contact->airtimes()->first()->pivot->qty);
     }
 }
