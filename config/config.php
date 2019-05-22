@@ -2,12 +2,15 @@
 
 return [
 	'table_names' => [
-		'smss'     => 's_m_s_s',
+        'airtime_contact' => 'airtime_contact',
+        'airtimes' => 'airtimes',
 		'contacts' => 'contacts',
+        'smss'     => 's_m_s_s',
 		'relays'   => 'relays'
 	],
     'classes' => [
         'models' => [
+            'airtime' => \LBHurtado\Missive\Models\Airtime::class,
             'contact' => \LBHurtado\Missive\Models\Contact::class,
             'relay' => \LBHurtado\Missive\Models\Relay::class,
             'sms' => \LBHurtado\Missive\Models\SMS::class

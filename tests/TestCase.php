@@ -14,13 +14,15 @@ class TestCase extends BaseTestCase
     {
         parent::setUp();
 
+        include_once __DIR__.'/../database/migrations/create_relays_table.php.stub';
         include_once __DIR__.'/../database/migrations/create_s_m_s_s_table.php.stub';
         include_once __DIR__.'/../database/migrations/create_contacts_table.php.stub';
-        include_once __DIR__.'/../database/migrations/create_relays_table.php.stub';
+        include_once __DIR__.'/../database/migrations/create_airtimes_table.php.stub';
 
         (new \CreateSMSsTable)->up();
-        (new \CreateContactsTable)->up();
         (new \CreateRelaysTable)->up();
+        (new \CreateContactsTable)->up();
+        (new \CreateAirtimesTable)->up();
 
         require_once __DIR__.'/../routes/api.php';
     }

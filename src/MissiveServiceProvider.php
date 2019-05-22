@@ -5,10 +5,10 @@ namespace LBHurtado\Missive;
 use Opis\Events\EventDispatcher;
 use LBHurtado\Missive\Routing\Router;
 use Illuminate\Support\ServiceProvider;
-use LBHurtado\Missive\Models\{SMS, Contact, Relay};
+use LBHurtado\Missive\Models\{SMS, Contact, Relay, Airtime};
 use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 use LBHurtado\Missive\Repositories\{SMSRepository, SMSRepositoryEloquent};
-use LBHurtado\Missive\Observers\{SMSObserver, ContactObserver, RelayObserver};
+use LBHurtado\Missive\Observers\{SMSObserver, ContactObserver, RelayObserver, AirtimeObserver};
 use LBHurtado\Missive\Repositories\{RelayRepository, RelayRepositoryEloquent};
 use LBHurtado\Missive\Repositories\{ContactRepository, ContactRepositoryEloquent};
 
@@ -23,6 +23,7 @@ class MissiveServiceProvider extends ServiceProvider
     const PACKAGE_SMSS_TABLE_MIGRATION_STUB = __DIR__.'/../database/migrations/create_s_m_s_s_table.php.stub';
     const PACKAGE_RELAYS_TABLE_MIGRATION_STUB = __DIR__.'/../database/migrations/create_relays_table.php.stub';
     const PACKAGE_CONTACTS_TABLE_MIGRATION_STUB = __DIR__.'/../database/migrations/create_contacts_table.php.stub';
+    const PACKAGE_AIRTIMES_TABLE_MIGRATION_STUB = __DIR__.'/../database/migrations/create_airtimes_table.php.stub';
 
     public function boot()
     {
@@ -48,6 +49,7 @@ class MissiveServiceProvider extends ServiceProvider
         app('missive.sms')::observe(SMSObserver::class);
         app('missive.relay')::observe(RelayObserver::class);
         app('missive.contact')::observe(ContactObserver::class);
+        app('missive.airtime')::observe(AirtimeObserver::class);
     }
 
     protected function publishConfigs()
@@ -75,6 +77,11 @@ class MissiveServiceProvider extends ServiceProvider
             if (! class_exists(CreateContactsTable::class)) {
                 $this->publishes([
                     self::PACKAGE_CONTACTS_TABLE_MIGRATION_STUB => database_path('migrations/'.date('Y_m_d_His', time()).'_create_contacts_table.php'),
+                ], 'missive-migrations');
+            }
+            if (! class_exists(CreateAirtimesTable::class)) {
+                $this->publishes([
+                    self::PACKAGE_AIRTIMES_TABLE_MIGRATION_STUB => database_path('migrations/'.date('Y_m_d_His', time()).'_create_airtimes_table.php'),
                 ], 'missive-migrations');
             }
         }
@@ -114,6 +121,10 @@ class MissiveServiceProvider extends ServiceProvider
         });
         $this->app->singleton('missive.contact', function () {
             $class = config('missive.classes.models.contact', Contact::class);
+            return new $class;
+        });
+        $this->app->singleton('missive.airtime', function () {
+            $class = config('missive.classes.models.airtime', Airtime::class);
             return new $class;
         });
     }

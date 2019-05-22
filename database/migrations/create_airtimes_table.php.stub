@@ -1,0 +1,55 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+/**
+ * Class CreateContactsTable.
+ */
+class CreateAirtimesTable extends Migration
+{
+    protected $default_master_table_name = 'airtimes';
+
+    protected $default_transaction_table_name = 'airtime_contact';
+
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        tap(config('missive.table_names.airtimes', $this->default_master_table_name), function($table_name) {
+            Schema::create($table_name, function(Blueprint $table) {
+                $table->increments('id');
+                $table->string('key')->unique();
+                $table->decimal('credits');
+                $table->timestamps();
+            });
+        });
+
+        Schema::create('airtime_contact', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('airtime_id')->unsigned()->index();
+            $table->integer('contact_id')->unsigned()->index();
+            $table->timestamps();
+            $table->foreign('airtime_id')->references('id')->on('airtimes')->onDelete('cascade');
+            $table->foreign('contact_id')->references('id')->on('contacts')->onDelete('cascade');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('airtime_contact');
+
+        tap(config('missive.table_names.airtimes', $this->default_master_table_name), function($table_name) {
+            Schema::drop($table_name);
+        });
+    }
+}
