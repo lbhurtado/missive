@@ -1,6 +1,6 @@
 {
     "name": "lbhurtado/missive",
-    "description": "Add SMS domain to a Laravel project - models, migrations, jobs, notifications, etc.",
+    "description": "Add SMS domain to a Laravel project - route, models, migrations, jobs, notifications, etc.",
     "keywords": [
         "lbhurtado",
         "missive",
@@ -26,6 +26,9 @@
     "require-dev": {
         "orchestra/testbench-browser-kit": "^3.5",
         "phpunit/phpunit": "^7.0"
+    },
+    "suggest": {
+        "lbhurtado/engagespark": "This package makes it easy to send SMS notifications and topups via engageSPARK with Laravel."
     },
     "autoload": {
         "psr-4": {

@@ -27,10 +27,10 @@ class MissiveServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->observeModels();
-        $this->registerConfigs();
+        $this->publishConfigs();
         $this->publishMigrations();
         $this->publishRoutes();
-        $this->app->make(EloquentFactory::class)->load(self::PACKAGE_FACTORY_DIR);
+        $this->mapFactories();
         $this->mapRoutes();
     }
 
@@ -138,6 +138,11 @@ class MissiveServiceProvider extends ServiceProvider
         $this->app->singleton(Router::class, function ($app) {
             return $app->make('missive:router');
         });
+    }
+
+    public function mapFactories()
+    {
+        $this->app->make(EloquentFactory::class)->load(self::PACKAGE_FACTORY_DIR);
     }
 
     public function mapRoutes()

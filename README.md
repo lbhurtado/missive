@@ -1,4 +1,4 @@
-# lbhurtado/missive
+# Missive
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/lbhurtado/missive.svg?style=flat-square)](https://packagist.org/packages/lbhurtado/missive)
 [![Build Status](https://img.shields.io/travis/lbhurtado/missive/master.svg?style=flat-square)](https://travis-ci.org/lbhurtado/missive)
@@ -21,7 +21,20 @@ php artisan vendor:publish --provider="LBHurtado\Missive\MissiveServiceProvider"
 php artisan migrate
 ```
 
-customize the tables and classes:
+inherit models:
+```php
+namespace App;
+
+use LBHurtado\EngageSpark\Traits\HasEngageSpark;
+use LBHurtado\Missive\Models\Contact as BaseContact;
+
+
+class Contact extends BaseContact
+{
+    use HasEngageSpark;
+}
+```
+customize the tables and classes e.g. App\Contact:
 ```php
 [
 	'table_names' => [
@@ -30,30 +43,44 @@ customize the tables and classes:
 		'relays'   => 'relays'
 	],
     'classes' => [
-        'commands' => [
-            'sms' => [
-                'create' => \LBHurtado\Missive\Commands\CreateSMSCommand::class
-            ]
-        ],
-        'handlers' => [
-            'sms' => [
-                'create' => \LBHurtado\Missive\Handlers\CreateSMSHandler::class
-            ]
-        ],
-        'middlewares' => [
-            'sms' => [
-                \LBHurtado\Missive\Validators\CreateSMSValidator::class,
-                \LBHurtado\Missive\Responders\CreateSMSResponder::class
+            'models' => [
+                'contact' => \App\Contact::class,
+                'relay' => \LBHurtado\Missive\Models\Relay::class,
+                'sms' => \LBHurtado\Missive\Models\SMS::class
+            ],
+            'commands' => [
+                'sms' => [
+                    'create' => \LBHurtado\Missive\Commands\CreateSMSCommand::class
+                ]
+            ],
+            'handlers' => [
+                'sms' => [
+                    'create' => \LBHurtado\Missive\Handlers\CreateSMSHandler::class
+                ]
+            ],
+            'middlewares' => [
+                'sms' => [
+                    \LBHurtado\Missive\Validators\CreateSMSValidator::class,
+                    \LBHurtado\Missive\Responders\CreateSMSResponder::class
+                ]
             ]
         ]
-    ]
 ]
 ```
 
 customize the routes in routes/sms.php:
 ```php
-$router->register('LOG {message}', function (string $path, array $values) {
+use LBHurtado\EngageSpark\Notifications\Adhoc;
+
+$router = resolve('missive:router');
+
+$router->register('LOG {message}', function (string $path, array $values) use ($router) {
     \Log::info($values['message']);
+    
+    tap($router->missive->getSMS()->origin, function ($contact) use ($values) {
+        $message = $values['message'];
+        $contact->notify(new Adhoc("{$contact->mobile}: $message"));
+    });
 });
 ```
 
@@ -103,12 +130,11 @@ curl -X POST \
   -H 'Connection: keep-alive' \
   -H 'Content-Type: application/json' \
   -H 'Host: laravel.app' \
-  -H 'content-length: 134' \
   -d '{
     "secret": "CFAWG4KCE44XWACTZZX24Z7LPW99XTWT",
     "from": "+639171234567",
     "to": "+639187654321",
-    "message": "test message"
+    "message": "LOG test message"
 }'
 ```
 
