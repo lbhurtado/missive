@@ -2,9 +2,11 @@
 
 namespace LBHurtado\Missive\Tests;
 
+use LBHurtado\Missive\Actions\Middleware\ChargeSMSMiddleware;
 use Opis\Events\EventDispatcher;
 use Illuminate\Support\Facades\Request;
 use LBHurtado\Missive\Actions\CreateSMSAction;
+use LBHurtado\Missive\Models\{Airtime, Contact};
 use Joselfonseca\LaravelTactician\CommandBusInterface;
 
 class CreateSMSActionTest extends TestCase
@@ -32,10 +34,19 @@ class CreateSMSActionTest extends TestCase
 
         /*** act */
         $action = new CreateSMSAction($this->bus, $this->dispatcher, $request);
-        $action->__invoke();
+        $response = $action->__invoke();
 
         /*** assert ***/
-        $this->assertEquals($attributes, $action->getData());
         $this->assertDatabaseHas('s_m_s_s', $attributes);
+
+        //TODO: test $response
+
+        if (in_array(ChargeSMSMiddleware::class, $action->getMiddlewares())) {
+            $this->assertDatabaseHas('airtime_contact', [
+                'contact_id' => Contact::where(['mobile' => $from])->first()->id,
+                'airtime_id' => Airtime::where(['key' => 'incoming-sms'])->first()->id,
+                'qty' => 1
+            ]);
+        }
     }
 }

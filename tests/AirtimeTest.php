@@ -16,7 +16,7 @@ class AirtimeTest extends TestCase
     public function airtime_model_has_key_credits_fields()
     {
         /*** arrange ***/
-        $key = 'incoming-sms'; $credits = '0.01';
+        $key = 'test-incoming-sms'; $credits = '0.01';
 
         /*** act ***/
         $airtime = Airtime::create($attributes = compact('key', 'credits'));
@@ -42,7 +42,7 @@ class AirtimeTest extends TestCase
     public function airtime_key_credits_is_required()
     {
         /*** arrange ***/
-        $key = 'incoming-sms'; $credits = null;
+        $key = 'test-incoming-sms'; $credits = null;
 
         /*** assert ***/
         $this->expectException(QueryException::class);
@@ -55,7 +55,7 @@ class AirtimeTest extends TestCase
     public function airtime_has_model_factory()
     {
         /*** arrange ***/
-        $key = 'incoming-sms';
+        $key = 'test-incoming-sms';
 
         /*** act ***/
         $airtime = factory(Airtime::class)->create($attributes = compact('key'));
@@ -68,7 +68,7 @@ class AirtimeTest extends TestCase
     public function airtime_creation_has_event()
     {
         /*** arrange ***/
-        $key = 'incoming-sms';
+        $key = 'test-incoming-sms';
         $dispatcher = app(EventDispatcher::class);
 
         /*** assert ***/

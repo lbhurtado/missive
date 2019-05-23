@@ -24,6 +24,9 @@ class TestCase extends BaseTestCase
         (new \CreateContactsTable)->up();
         (new \CreateAirtimesTable)->up();
 
+        include_once __DIR__.'/../database/seeds/AirtimeSeeder.php';
+        (new \AirtimeSeeder)->run();
+
         require_once __DIR__.'/../routes/api.php';
     }
 

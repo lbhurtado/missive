@@ -11,6 +11,7 @@ use LBHurtado\Missive\Repositories\{SMSRepository, SMSRepositoryEloquent};
 use LBHurtado\Missive\Observers\{SMSObserver, ContactObserver, RelayObserver, AirtimeObserver};
 use LBHurtado\Missive\Repositories\{RelayRepository, RelayRepositoryEloquent};
 use LBHurtado\Missive\Repositories\{ContactRepository, ContactRepositoryEloquent};
+use LBHurtado\Missive\Repositories\{AirtimeRepository, AirtimeRepositoryEloquent};
 
 class MissiveServiceProvider extends ServiceProvider
 {
@@ -107,6 +108,7 @@ class MissiveServiceProvider extends ServiceProvider
         $this->app->bind(SMSRepository::class, SMSRepositoryEloquent::class);
         $this->app->bind(RelayRepository::class, RelayRepositoryEloquent::class);
         $this->app->bind(ContactRepository::class, ContactRepositoryEloquent::class);
+        $this->app->bind(AirtimeRepository::class, AirtimeRepositoryEloquent::class);
     }
 
     protected function registerModels()
@@ -132,7 +134,7 @@ class MissiveServiceProvider extends ServiceProvider
     protected function registerFacades()
     {
         $this->app->singleton('missive', function () {
-            return new Missive;
+            return new Missive(app(AirtimeRepository::class));
         });
         $this->app->singleton('missive:router', function () {
             return new Router(app(Missive::class));
