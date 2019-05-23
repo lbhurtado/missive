@@ -8,10 +8,10 @@ use Illuminate\Support\ServiceProvider;
 use LBHurtado\Missive\Models\{SMS, Contact, Relay, Airtime};
 use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 use LBHurtado\Missive\Repositories\{SMSRepository, SMSRepositoryEloquent};
-use LBHurtado\Missive\Observers\{SMSObserver, ContactObserver, RelayObserver, AirtimeObserver};
 use LBHurtado\Missive\Repositories\{RelayRepository, RelayRepositoryEloquent};
 use LBHurtado\Missive\Repositories\{ContactRepository, ContactRepositoryEloquent};
 use LBHurtado\Missive\Repositories\{AirtimeRepository, AirtimeRepositoryEloquent};
+use LBHurtado\Missive\Observers\{SMSObserver, ContactObserver, RelayObserver, AirtimeObserver};
 
 class MissiveServiceProvider extends ServiceProvider
 {

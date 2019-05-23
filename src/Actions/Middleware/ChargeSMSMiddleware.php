@@ -4,6 +4,7 @@ namespace LBHurtado\Missive\Actions\Middleware;
 
 use League\Tactician\Middleware;
 use LBHurtado\Missive\Facades\Missive;
+use LBHurtado\Missive\Types\ChargeType;
 use LBHurtado\Missive\Repositories\AirtimeRepository;
 
 class ChargeSMSMiddleware implements Middleware
@@ -19,6 +20,6 @@ class ChargeSMSMiddleware implements Middleware
     {
         $next($command);
 
-        Missive::chargeSMS('incoming-sms');
+        Missive::chargeSMS(ChargeType::INCOMING_SMS());
     }
 }

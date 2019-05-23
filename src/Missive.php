@@ -2,6 +2,7 @@
 
 namespace LBHurtado\Missive;
 
+use LBHurtado\Missive\Types\ChargeType;
 use LBHurtado\Missive\Classes\SMSAbstract;
 use LBHurtado\Missive\Pivots\AirtimeContact;
 use LBHurtado\Missive\Repositories\AirtimeRepository;
@@ -37,10 +38,15 @@ class Missive
         return $this->sms;
     }
 
-    public function chargeSMS($key, $qty = 1)
+    /**
+     * @param ChargeType $key
+     * @param int $qty
+     */
+    public function chargeSMS(ChargeType $key, int $qty = 1)
     {
+        //TODO: return newly created pivot record
         tap($this->getSMS()->origin, function ($contact) use ($key, $qty) {
-            optional($this->airtimes->findWhere(compact('key'))->first(), function ($airtime) use ($contact, $qty) {
+            optional($this->airtimes->findWhere(['key' => $key->value()])->first(), function ($airtime) use ($contact, $qty) {
                 $contact->addAirtime($airtime, (new AirtimeContact)->setQty($qty));
             });
         });
