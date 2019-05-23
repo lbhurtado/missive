@@ -19,7 +19,16 @@ publish vendor files:
 ```bash
 php artisan vendor:publish --provider="LBHurtado\Missive\MissiveServiceProvider"
 php artisan migrate
+
+
 ```
+optionally, if you want sms charging:
+
+```bash
+composer dumpautoload
+php artisan db:seed --class=AirtimeSeeder
+```
+then uncomment the middleware in missive.php
 
 inherit models:
 ```php
@@ -27,7 +36,6 @@ namespace App;
 
 use LBHurtado\EngageSpark\Traits\HasEngageSpark;
 use LBHurtado\Missive\Models\Contact as BaseContact;
-
 
 class Contact extends BaseContact
 {
@@ -61,7 +69,8 @@ customize the tables and classes e.g. App\Contact:
             'middlewares' => [
                 'sms' => [
                     \LBHurtado\Missive\Validators\CreateSMSValidator::class,
-                    \LBHurtado\Missive\Responders\CreateSMSResponder::class
+                    \LBHurtado\Missive\Responders\CreateSMSResponder::class,
+//                  \LBHurtado\Missive\Actions\Middleware\ChargeSMSMiddleware::class,
                 ]
             ]
         ]
