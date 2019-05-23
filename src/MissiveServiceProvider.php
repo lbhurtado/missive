@@ -86,7 +86,7 @@ class MissiveServiceProvider extends ServiceProvider
             }
             if (! class_exists(CreateAirtimesTable::class)) {
                 $this->publishes([
-                    self::PACKAGE_AIRTIMES_TABLE_MIGRATION_STUB => database_path('migrations/'.date('Y_m_d_His', time()).'_create_airtimes_table.php'),
+                    self::PACKAGE_AIRTIMES_TABLE_MIGRATION_STUB => database_path('migrations/'.date('Y_m_d_His', time()+60).'_create_airtimes_table.php'),
                 ], 'missive-migrations');
             }
         }
