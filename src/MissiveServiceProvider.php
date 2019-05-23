@@ -34,6 +34,7 @@ class MissiveServiceProvider extends ServiceProvider
         $this->observeModels();
         $this->publishConfigs();
         $this->publishMigrations();
+        $this->publishSeeds();
         $this->publishRoutes();
         $this->mapFactories();
         $this->mapRoutes();
