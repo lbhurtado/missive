@@ -16,6 +16,8 @@ use LBHurtado\Missive\Repositories\{AirtimeRepository, AirtimeRepositoryEloquent
 class MissiveServiceProvider extends ServiceProvider
 {
     const APPLICATION_ROUTE_SMS = 'routes/sms.php';
+    const APPLICATION_AIRTIME_SEEDER = 'seeds/AirtimeSeeder.php';
+
     const PACKAGE_ROUTE_API = __DIR__.'/../routes/api.php';
     const PACKAGE_ROUTE_SMS = __DIR__.'/../routes/sms.php';
     const PACKAGE_FACTORY_DIR = __DIR__ . '/../database/factories';
@@ -25,6 +27,7 @@ class MissiveServiceProvider extends ServiceProvider
     const PACKAGE_RELAYS_TABLE_MIGRATION_STUB = __DIR__.'/../database/migrations/create_relays_table.php.stub';
     const PACKAGE_CONTACTS_TABLE_MIGRATION_STUB = __DIR__.'/../database/migrations/create_contacts_table.php.stub';
     const PACKAGE_AIRTIMES_TABLE_MIGRATION_STUB = __DIR__.'/../database/migrations/create_airtimes_table.php.stub';
+    const PACKAGE_AIRTIME_SEEDER = __DIR__.'/../database/seeds/AirtimeSeeder.php';
 
     public function boot()
     {
@@ -85,6 +88,15 @@ class MissiveServiceProvider extends ServiceProvider
                     self::PACKAGE_AIRTIMES_TABLE_MIGRATION_STUB => database_path('migrations/'.date('Y_m_d_His', time()).'_create_airtimes_table.php'),
                 ], 'missive-migrations');
             }
+        }
+    }
+
+    protected function publishSeeds()
+    {
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                self::PACKAGE_AIRTIME_SEEDER => database_path(self::APPLICATION_AIRTIME_SEEDER),
+            ], 'missive-seeds');
         }
     }
 
