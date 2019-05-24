@@ -15,6 +15,9 @@ return [
             'relay' => \LBHurtado\Missive\Models\Relay::class,
             'sms' => \LBHurtado\Missive\Models\SMS::class
         ],
+        'pivots' => [
+            'airtime_contact' => \LBHurtado\Missive\Pivots\AirtimeContact::class
+        ],
         'commands' => [
             'sms' => [
                 'create' => \LBHurtado\Missive\Commands\CreateSMSCommand::class
@@ -32,5 +35,5 @@ return [
 //                \LBHurtado\Missive\Actions\Middleware\ChargeSMSMiddleware::class,
             ]
         ]
-    ]
+    ],
 ];

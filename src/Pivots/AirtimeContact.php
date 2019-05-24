@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class AirtimeContact extends Pivot
 {
-    const DEFAULT_QTY = 2;
+    const DEFAULT_QTY = 1;
 
     protected $attributes = [
         'qty' => self::DEFAULT_QTY

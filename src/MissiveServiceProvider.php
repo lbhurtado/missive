@@ -11,7 +11,8 @@ use LBHurtado\Missive\Repositories\{SMSRepository, SMSRepositoryEloquent};
 use LBHurtado\Missive\Repositories\{RelayRepository, RelayRepositoryEloquent};
 use LBHurtado\Missive\Repositories\{ContactRepository, ContactRepositoryEloquent};
 use LBHurtado\Missive\Repositories\{AirtimeRepository, AirtimeRepositoryEloquent};
-use LBHurtado\Missive\Observers\{SMSObserver, ContactObserver, RelayObserver, AirtimeObserver};
+use LBHurtado\Missive\Observers\{SMSObserver, ContactObserver, RelayObserver, AirtimeObserver,
+    AirtimeContactObserver};
 
 class MissiveServiceProvider extends ServiceProvider
 {
@@ -22,12 +23,12 @@ class MissiveServiceProvider extends ServiceProvider
     const PACKAGE_ROUTE_SMS = __DIR__.'/../routes/sms.php';
     const PACKAGE_FACTORY_DIR = __DIR__ . '/../database/factories';
     const PACKAGE_MISSIVE_CONFIG = __DIR__.'/../config/config.php';
+    const PACKAGE_AIRTIME_SEEDER = __DIR__.'/../database/seeds/AirtimeSeeder.php';
     const PACKAGE_TACTICIAN_FIELDS_CONFIG = __DIR__.'/../config/tactician.fields.php';
     const PACKAGE_SMSS_TABLE_MIGRATION_STUB = __DIR__.'/../database/migrations/create_s_m_s_s_table.php.stub';
     const PACKAGE_RELAYS_TABLE_MIGRATION_STUB = __DIR__.'/../database/migrations/create_relays_table.php.stub';
     const PACKAGE_CONTACTS_TABLE_MIGRATION_STUB = __DIR__.'/../database/migrations/create_contacts_table.php.stub';
     const PACKAGE_AIRTIMES_TABLE_MIGRATION_STUB = __DIR__.'/../database/migrations/create_airtimes_table.php.stub';
-    const PACKAGE_AIRTIME_SEEDER = __DIR__.'/../database/seeds/AirtimeSeeder.php';
 
     public function boot()
     {
@@ -45,6 +46,7 @@ class MissiveServiceProvider extends ServiceProvider
         $this->registerConfigs();
         $this->registerRepositories();
         $this->registerModels();
+        $this->registerPivots();
         $this->registerFacades();
         $this->registerClasses();
     }
@@ -55,6 +57,7 @@ class MissiveServiceProvider extends ServiceProvider
         app('missive.relay')::observe(RelayObserver::class);
         app('missive.contact')::observe(ContactObserver::class);
         app('missive.airtime')::observe(AirtimeObserver::class);
+        app('missive.airtime_contact')::observe(AirtimeContactObserver::class);
     }
 
     protected function publishConfigs()
@@ -140,6 +143,14 @@ class MissiveServiceProvider extends ServiceProvider
         });
         $this->app->singleton('missive.airtime', function () {
             $class = config('missive.classes.models.airtime', Airtime::class);
+            return new $class;
+        });
+    }
+
+    protected function registerPivots()
+    {
+        $this->app->singleton('missive.airtime_contact', function () {
+            $class = config('missive.classes.pivots.airtime_contact', Airtime::class);
             return new $class;
         });
     }
