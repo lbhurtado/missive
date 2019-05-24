@@ -131,6 +131,18 @@ $relays = app(RelayRepository::class);
 $relay = $relays->first();
 ```
 
+add otp verification to your contacts:
+``` php
+use LBHurtado\Missive\Traits\HasOTP;
+use LBHurtado\Missive\Models\Contact;
+
+$contact = Contact::find(1);
+$otp = $contact->challenge()->now();
+
+if ($contact->verify($otp) == true) {
+    //code here
+}
+``` 
 ``` bash
 curl -X POST \
   http://laravel.app/api/sms/relay \
