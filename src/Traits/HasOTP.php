@@ -8,18 +8,18 @@ use OTPHP\TOTPInterface;
 
 trait HasOTP
 {
-    public function setTOTP($totp)
+    public function setTOTP(TOTPInterface $totp)
     {
         $totp->setLabel('lester@hurtado.ph');
-        $this->uri = $totp->getProvisioningUri();
+        $this->URI = $totp->getProvisioningUri();
         $this->save();
 
         return $this;
     }
 
-    public function getTOTP()
+    public function getTOTP(): TOTPInterface
     {
-        return Factory::loadFromProvisioningUri($this->uri);
+        return Factory::loadFromProvisioningUri($this->URI);
     }
 
     public function challenge($notification = null)

@@ -6,6 +6,7 @@ use LBHurtado\Missive\Facades\Missive;
 use LBHurtado\Missive\MissiveServiceProvider;
 use LBHurtado\Missive\Actions\CreateSMSAction;
 use Orchestra\Testbench\TestCase as BaseTestCase;
+use Spatie\SchemalessAttributes\SchemalessAttributesServiceProvider;
 use Joselfonseca\LaravelTactician\Providers\LaravelTacticianServiceProvider;
 
 class TestCase extends BaseTestCase
@@ -35,6 +36,7 @@ class TestCase extends BaseTestCase
         return [
             MissiveServiceProvider::class,
             LaravelTacticianServiceProvider::class,
+            SchemalessAttributesServiceProvider::class,
         ];
     }
 

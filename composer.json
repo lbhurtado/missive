@@ -23,6 +23,7 @@
         "illuminate/support": "5.8.*",
         "lbhurtado/tactician": "^1.0",
         "prettus/l5-repository": "^2.6",
+        "spatie/laravel-schemaless-attributes": "^1.4",
         "spomky-labs/otphp": "^10.0"
     },
     "require-dev": {

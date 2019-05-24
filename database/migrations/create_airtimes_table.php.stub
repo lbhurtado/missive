@@ -29,6 +29,7 @@ class CreateAirtimesTable extends Migration
             });
         });
 
+        //TODO: add extra_attributes here
         tap(config('missive.table_names.airtime_contact', $this->default_airtime_contact_name), function($table_name) {
             Schema::create($table_name, function (Blueprint $table) {
                 $table->increments('id');
