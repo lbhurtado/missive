@@ -53,6 +53,20 @@ class ContactTest extends TestCase
     }
 
     /** @test */
+    public function contact_model_has_URI_extra_attribute_field()
+    {
+        /*** arrange ***/
+        $contact = factory(Contact::class)->create();
+        $provisioningURI = 'otpauth://totp/alice%40google.com?secret=JBSWY3DPEHPK3PXP&foo=bar';
+
+        /*** act ***/
+        $contact->URI = $provisioningURI;
+
+        /*** assert ***/
+        $this->assertEquals($provisioningURI, $contact->extra_attributes['uri']);
+    }
+
+    /** @test */
     public function contact_has_model_factory()
     {
         /*** arrange ***/
