@@ -22,7 +22,8 @@
         "eloquent/enumeration": "^6.0",
         "illuminate/support": "5.8.*",
         "lbhurtado/tactician": "^1.0",
-        "prettus/l5-repository": "^2.6"
+        "prettus/l5-repository": "^2.6",
+        "spomky-labs/otphp": "^10.0"
     },
     "require-dev": {
         "orchestra/testbench-browser-kit": "^3.5",

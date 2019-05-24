@@ -89,4 +89,17 @@ class ContactTest extends TestCase
         /*** act ***/
         factory(Contact::class)->create(compact('mobile'));
     }
+
+    /** @test */
+    public function contact_can_challenge_and_verify_otp()
+    {
+        /*** arrange ***/
+        $contact = factory(Contact::class)->create();
+
+        /*** act ***/
+        $otp = $contact->challenge()->now();
+
+        /*** assert ***/
+        $this->assertTrue($contact->verify($otp) == true);
+    }
 }

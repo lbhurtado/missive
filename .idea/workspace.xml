@@ -2,15 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fcbc382-ba39-4f0d-a684-c752c9d8f5e6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Events/AirtimeContactEvent.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Events/AirtimeContactEvents.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Observers/AirtimeContactObserver.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/AirtimeContactTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Traits/HasOTP.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Missive.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Missive.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MissiveServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MissiveServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pivots/AirtimeContact.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pivots/AirtimeContact.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/AirtimeTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/AirtimeTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/create_contacts_table.php.stub" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/create_contacts_table.php.stub" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Contact.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Contact.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/ContactTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/ContactTest.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,7 +21,47 @@
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/sms.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Models/Contact.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+              <folding>
+                <element signature="e#44#80#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/ContactTest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="616">
+              <caret line="102" column="57" selection-start-line="102" selection-start-column="57" selection-end-line="102" selection-end-column="57" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Traits/HasOTP.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="59" selection-start-line="15" selection-start-column="59" selection-end-line="15" selection-end-column="59" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -53,11 +92,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database/factories/RelayFactory.php" />
-        <option value="$PROJECT_DIR$/tests/ExampleTest.php" />
         <option value="$PROJECT_DIR$/tests/SMSRepositoryTest.php" />
         <option value="$PROJECT_DIR$/tests/SMSTest.php" />
-        <option value="$PROJECT_DIR$/tests/ContactTest.php" />
         <option value="$PROJECT_DIR$/tests/RelayTest.php" />
         <option value="$PROJECT_DIR$/src/Classes/MobileHandle.php" />
         <option value="$PROJECT_DIR$/src/Validators/CreateSMSValidator.php" />
@@ -81,7 +117,6 @@
         <option value="$PROJECT_DIR$/database/factories/AirtimeFactory.php" />
         <option value="$PROJECT_DIR$/database/migrations/create_s_m_s_s_table.php.stub" />
         <option value="$PROJECT_DIR$/database/migrations/create_airtimes_table.php.stub" />
-        <option value="$PROJECT_DIR$/src/Models/Contact.php" />
         <option value="$PROJECT_DIR$/src/Actions/CreateSMSAction.php" />
         <option value="$PROJECT_DIR$/src/Repositories/AirtimeRepository.php" />
         <option value="$PROJECT_DIR$/src/Repositories/AirtimeRepositoryEloquent.php" />
@@ -104,6 +139,10 @@
         <option value="$PROJECT_DIR$/src/MissiveServiceProvider.php" />
         <option value="$PROJECT_DIR$/tests/AirtimeContactTest.php" />
         <option value="$PROJECT_DIR$/tests/AirtimeTest.php" />
+        <option value="$PROJECT_DIR$/src/Models/Contact.php" />
+        <option value="$PROJECT_DIR$/database/migrations/create_contacts_table.php.stub" />
+        <option value="$PROJECT_DIR$/tests/ContactTest.php" />
+        <option value="$PROJECT_DIR$/src/Traits/HasOTP.php" />
       </list>
     </option>
   </component>
@@ -193,6 +232,10 @@
       <path value="$PROJECT_DIR$/vendor/orchestra/testbench-browser-kit" />
       <path value="$PROJECT_DIR$/vendor/laravel/browser-kit-testing" />
       <path value="$PROJECT_DIR$/vendor/eloquent/enumeration" />
+      <path value="$PROJECT_DIR$/vendor/thecodingmachine/safe" />
+      <path value="$PROJECT_DIR$/vendor/spomky-labs/otphp" />
+      <path value="$PROJECT_DIR$/vendor/beberlei/assert" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/constant_time_encoding" />
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
@@ -217,13 +260,29 @@
             <path>
               <item name="Missive" type="b2602c69:ProjectViewProjectNode" />
               <item name="Missive" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Missive" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Missive" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Missive" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Missive" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Missive" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Missive" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Missive" type="b2602c69:ProjectViewProjectNode" />
               <item name="Missive" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Pivots" type="462c0819:PsiDirectoryNode" />
+              <item name="Traits" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Missive" type="b2602c69:ProjectViewProjectNode" />
@@ -288,12 +347,12 @@
       <workItem from="1558411446863" duration="11443000" />
       <workItem from="1558439736575" duration="13935000" />
       <workItem from="1558490307955" duration="10235000" />
-      <workItem from="1558535540520" duration="36591000" />
+      <workItem from="1558535540520" duration="40288000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="200911000" />
+    <option name="totallyTimeSpent" value="204608000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -306,8 +365,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1904762" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1904762" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -320,7 +380,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32810867" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.25600836" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.25600836" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -332,40 +392,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Events/ContactEvents.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" selection-start-line="2" selection-end-line="7" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Observers/ContactObserver.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="25" column="1" lean-forward="true" selection-end-line="25" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/sms.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/SMSTest.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/factories/ContactFactory.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/factories/RelayFactory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="11" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/factories/AirtimeFactory.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -389,16 +415,6 @@
           <caret line="76" selection-start-line="76" selection-end-line="90" selection-end-column="5" />
           <folding>
             <element signature="e#43#70#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Models/Contact.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <element signature="e#44#84#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -753,6 +769,50 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="43" selection-start-line="8" selection-start-column="43" selection-end-line="8" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Classes/SMSAbstract.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Classes/MobileHandle.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/sms.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Models/Contact.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+          <folding>
+            <element signature="e#44#80#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/create_contacts_table.php.stub">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="25" column="61" selection-start-line="25" selection-start-column="61" selection-end-line="25" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/ContactTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="616">
+          <caret line="102" column="57" selection-start-line="102" selection-start-column="57" selection-end-line="102" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Traits/HasOTP.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="59" selection-start-line="15" selection-start-column="59" selection-end-line="15" selection-end-column="59" />
         </state>
       </provider>
     </entry>

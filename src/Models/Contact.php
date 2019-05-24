@@ -2,12 +2,13 @@
 
 namespace LBHurtado\Missive\Models;
 
+use LBHurtado\Missive\Traits\HasOTP;
 use LBHurtado\Missive\Traits\HasAirtime;
 use LBHurtado\Missive\Classes\MobileHandle;
 
 class Contact extends MobileHandle
 {
-    use HasAirtime;
+    use HasAirtime, HasOTP;
 
     protected function getTableIndex(): string
     {
