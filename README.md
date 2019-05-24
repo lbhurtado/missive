@@ -68,10 +68,18 @@ customize the tables and classes e.g. App\Contact:
             ],
             'middlewares' => [
                 'sms' => [
-                    \LBHurtado\Missive\Validators\CreateSMSValidator::class,
-                    \LBHurtado\Missive\Responders\CreateSMSResponder::class,
-//                  \LBHurtado\Missive\Actions\Middleware\ChargeSMSMiddleware::class,
-                ]
+                    'relay' => [
+                        \LBHurtado\Missive\Validators\CreateSMSValidator::class,
+                        \LBHurtado\Missive\Responders\CreateSMSResponder::class,
+    //                \LBHurtado\Missive\Actions\Middleware\ChargeSMSMiddleware::class,
+                    ],
+                    'verify' => [
+                        \LBHurtado\Missive\Validators\CreateSMSValidator::class,
+                        \LBHurtado\Missive\Responders\CreateSMSResponder::class,
+                        \LBHurtado\Missive\Actions\Middleware\VerifyContactHandler::class,
+    //                    \LBHurtado\Missive\Actions\Middleware\ChargeSMSMiddleware::class,
+                    ],
+                ],
             ]
         ]
 ]
@@ -143,6 +151,8 @@ if ($contact->verify($otp) == true) {
     //code here
 }
 ``` 
+
+sms relay
 ``` bash
 curl -X POST \
   http://laravel.app/api/sms/relay \
@@ -156,6 +166,23 @@ curl -X POST \
     "from": "+639171234567",
     "to": "+639187654321",
     "message": "LOG test message"
+}'
+```
+
+sms OTP verification
+``` bash
+curl -X POST \
+  http://laravel.app/api/sms/verify \
+  -H 'Accept: */*' \
+  -H 'Cache-Control: no-cache' \
+  -H 'Connection: keep-alive' \
+  -H 'Content-Type: application/json' \
+  -H 'Host: laravel.app' \
+  -d '{
+    "secret": "CFAWG4KCE44XWACTZZX24Z7LPW99XTWT",
+    "from": "+639171234567",
+    "to": "+639187654321",
+    "message": "123456"
 }'
 ```
 

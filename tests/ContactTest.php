@@ -12,7 +12,6 @@ use LBHurtado\Missive\Classes\MobileHandle;
 
 class ContactTest extends TestCase
 {
-    //TODO: test extra_attributes
     /** @test */
     public function contact_model_has_mobile_handle_fields()
     {

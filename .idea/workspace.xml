@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8fcbc382-ba39-4f0d-a684-c752c9d8f5e6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/ContactTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/ContactTest.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,8 +27,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/ContactTest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="62" column="41" selection-start-line="62" selection-start-column="41" selection-end-line="62" selection-end-column="41" />
+            <state relative-caret-position="34">
+              <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
               <folding>
                 <element signature="e#43#70#0#PHP" expanded="true" />
               </folding>
@@ -330,12 +329,12 @@
       <workItem from="1558411446863" duration="11443000" />
       <workItem from="1558439736575" duration="13935000" />
       <workItem from="1558490307955" duration="10235000" />
-      <workItem from="1558535540520" duration="54827000" />
+      <workItem from="1558535540520" duration="55210000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="219147000" />
+    <option name="totallyTimeSpent" value="219530000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -814,8 +813,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/ContactTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="62" column="41" selection-start-line="62" selection-start-column="41" selection-end-line="62" selection-end-column="41" />
+        <state relative-caret-position="34">
+          <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
           <folding>
             <element signature="e#43#70#0#PHP" expanded="true" />
           </folding>
