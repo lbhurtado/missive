@@ -23,6 +23,7 @@ class CreateContactsTable extends Migration
 	            $table->increments('id');
 	            $table->string('mobile')->unique();
 	            $table->string('handle')->nullable()->index();
+                $table->string('uri')->nullable();
                 $table->timestamp('verified_at')->nullable();
 	            $table->timestamps();
 			});			

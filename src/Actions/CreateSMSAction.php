@@ -44,6 +44,6 @@ class CreateSMSAction extends ActionAbstract implements ActionInterface
 
     public function getMiddlewares():array
     {
-        return config('missive.classes.middlewares.sms', $this->middlewares);
+        return config('missive.classes.middlewares.sms.relay', $this->middlewares);
     }
 }

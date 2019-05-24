@@ -30,10 +30,18 @@ return [
         ],
         'middlewares' => [
             'sms' => [
-                \LBHurtado\Missive\Validators\CreateSMSValidator::class,
-                \LBHurtado\Missive\Responders\CreateSMSResponder::class,
+                'relay' => [
+                    \LBHurtado\Missive\Validators\CreateSMSValidator::class,
+                    \LBHurtado\Missive\Responders\CreateSMSResponder::class,
 //                \LBHurtado\Missive\Actions\Middleware\ChargeSMSMiddleware::class,
-            ]
-        ]
+                ],
+                'verify' => [
+                    \LBHurtado\Missive\Validators\CreateSMSValidator::class,
+                    \LBHurtado\Missive\Responders\CreateSMSResponder::class,
+                    \LBHurtado\Missive\Actions\Middleware\VerifyContactHandler::class,
+//                    \LBHurtado\Missive\Actions\Middleware\ChargeSMSMiddleware::class,
+                ],
+            ],
+        ],
     ],
 ];

@@ -97,9 +97,10 @@ class ContactTest extends TestCase
         $contact = factory(Contact::class)->create();
 
         /*** act ***/
-        $otp = $contact->challenge()->now();
+        $otp = $contact->challenge()->getTOTP()->now();
 
         /*** assert ***/
         $this->assertTrue($contact->verify($otp) == true);
+        $this->assertTrue($contact->verified());
     }
 }

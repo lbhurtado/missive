@@ -10,6 +10,12 @@ class Contact extends MobileHandle
 {
     use HasAirtime, HasOTP;
 
+    protected $fillable = [
+        'mobile',
+        'handle',
+        'uri',
+    ];
+
     protected function getTableIndex(): string
     {
         return 'contacts';
