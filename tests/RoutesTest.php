@@ -40,4 +40,24 @@ class RoutesTest extends TestCase
         $this->assertDatabaseHas('contacts', ['mobile' => $from]);
         $this->assertTrue(Contact::where('mobile', $from)->first()->verified());
     }
+
+    /** @test */
+    public function topup_route_can_be_accessed()
+    {
+        /*** arrange ***/
+        $from = '+639171234567'; $to = '+639187654321';
+        $recipient = '+639235555555'; $amount = 25;
+        $message = "{$recipient} {$amount}";
+        $attributes = compact('from', 'to', 'message');
+
+        /*** act */
+        $crawler = $this->post('api/sms/topup', $attributes);
+        $contact = Contact::where('mobile', $recipient)->first();
+
+        /*** assert ***/
+        $crawler->assertStatus(200)->assertJson(['data' => $attributes]);
+        $this->assertDatabaseHas('contacts', ['mobile' => $from]);
+        $this->assertDatabaseHas('contacts', ['mobile' => $recipient]);
+        $this->assertDatabaseHas('topups', ['contact_id' => $contact->id, 'amount' => $amount]);
+    }
 }

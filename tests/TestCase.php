@@ -19,11 +19,13 @@ class TestCase extends BaseTestCase
         include_once __DIR__.'/../database/migrations/create_s_m_s_s_table.php.stub';
         include_once __DIR__.'/../database/migrations/create_contacts_table.php.stub';
         include_once __DIR__.'/../database/migrations/create_airtimes_table.php.stub';
+        include_once __DIR__.'/../database/migrations/create_topups_table.php.stub';
 
         (new \CreateSMSsTable)->up();
         (new \CreateRelaysTable)->up();
         (new \CreateContactsTable)->up();
         (new \CreateAirtimesTable)->up();
+        (new \CreateTopupsTable)->up();
 
         include_once __DIR__.'/../database/seeds/AirtimeSeeder.php';
         (new \AirtimeSeeder)->run();

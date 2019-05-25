@@ -2,6 +2,8 @@
 
 namespace LBHurtado\Missive;
 
+use Illuminate\Support\Arr;
+use LBHurtado\Missive\Models\Topup;
 use LBHurtado\Missive\Models\Contact;
 use LBHurtado\Missive\Types\ChargeType;
 use LBHurtado\Missive\Classes\SMSAbstract;
@@ -62,10 +64,27 @@ class Missive
         });
     }
 
+    /**
+     * @param string $otp
+     * @return $this
+     */
     public function verifyContact(string $otp)
     {
         $this->getContact()->verify(trim($otp));
 
         return $this;
     }
+
+    public function topupMobile(array $attributes)
+    {
+        $mobile = $attributes['mobile'];
+        $amount = $attributes['amount'];
+
+        //TODO: create a separate package for SMS Driver Manager
+        tap(Contact::create(compact('mobile')), function ($contact) use ($amount) {
+            Topup::make(compact( 'amount'))->contact()->associate($contact)->save();
+        });
+    }
+
+    //TODO: create an artisan command to challenge
 }

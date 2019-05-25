@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.0 - 2019-05-24
+
+- add topup
+
 ## 1.3.0 - 2019-05-24
 
 - add OTP challenge and verification

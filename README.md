@@ -48,10 +48,12 @@ customize the tables and classes e.g. App\Contact:
 	'table_names' => [
 		'smss'     => 's_m_s_s',
 		'contacts' => 'contacts',
-		'relays'   => 'relays'
+		'relays'   => 'relays',
+        'topups'   => 'topups',
 	],
     'classes' => [
             'models' => [
+                'airtime' => \LBHurtado\Missive\Models\Airtime::class,
                 'contact' => \App\Contact::class,
                 'relay' => \LBHurtado\Missive\Models\Relay::class,
                 'sms' => \LBHurtado\Missive\Models\SMS::class
@@ -77,6 +79,12 @@ customize the tables and classes e.g. App\Contact:
                         \LBHurtado\Missive\Validators\CreateSMSValidator::class,
                         \LBHurtado\Missive\Responders\CreateSMSResponder::class,
                         \LBHurtado\Missive\Actions\Middleware\VerifyContactHandler::class,
+    //                    \LBHurtado\Missive\Actions\Middleware\ChargeSMSMiddleware::class,
+                    ],
+                    'topup' => [
+                        \LBHurtado\Missive\Validators\CreateSMSValidator::class,
+                        \LBHurtado\Missive\Responders\CreateSMSResponder::class,
+                        \LBHurtado\Missive\Actions\Middleware\TopupMobileHandler::class,
     //                    \LBHurtado\Missive\Actions\Middleware\ChargeSMSMiddleware::class,
                     ],
                 ],
@@ -183,6 +191,23 @@ curl -X POST \
     "from": "+639171234567",
     "to": "+639187654321",
     "message": "123456"
+}'
+```
+
+sms topup
+``` bash
+curl -X POST \
+  http://laravel.app/api/sms/topup \
+  -H 'Accept: */*' \
+  -H 'Cache-Control: no-cache' \
+  -H 'Connection: keep-alive' \
+  -H 'Content-Type: application/json' \
+  -H 'Host: laravel.app' \
+  -d '{
+    "secret": "CFAWG4KCE44XWACTZZX24Z7LPW99XTWT",
+    "from": "+639171234567",
+    "to": "+639187654321",
+    "message": "09171234567 25"
 }'
 ```
 

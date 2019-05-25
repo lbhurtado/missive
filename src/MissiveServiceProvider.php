@@ -5,7 +5,7 @@ namespace LBHurtado\Missive;
 use Opis\Events\EventDispatcher;
 use LBHurtado\Missive\Routing\Router;
 use Illuminate\Support\ServiceProvider;
-use LBHurtado\Missive\Models\{SMS, Contact, Relay, Airtime};
+use LBHurtado\Missive\Models\{SMS, Contact, Relay, Airtime, Topup};
 use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 use LBHurtado\Missive\Repositories\{SMSRepository, SMSRepositoryEloquent};
 use LBHurtado\Missive\Repositories\{RelayRepository, RelayRepositoryEloquent};
@@ -29,6 +29,7 @@ class MissiveServiceProvider extends ServiceProvider
     const PACKAGE_RELAYS_TABLE_MIGRATION_STUB = __DIR__.'/../database/migrations/create_relays_table.php.stub';
     const PACKAGE_CONTACTS_TABLE_MIGRATION_STUB = __DIR__.'/../database/migrations/create_contacts_table.php.stub';
     const PACKAGE_AIRTIMES_TABLE_MIGRATION_STUB = __DIR__.'/../database/migrations/create_airtimes_table.php.stub';
+    const PACKAGE_TOPUPS_TABLE_MIGRATION_STUB = __DIR__.'/../database/migrations/create_topups_table.php.stub';
 
     public function boot()
     {
@@ -58,6 +59,7 @@ class MissiveServiceProvider extends ServiceProvider
         app('missive.contact')::observe(ContactObserver::class);
         app('missive.airtime')::observe(AirtimeObserver::class);
         app('missive.airtime_contact')::observe(AirtimeContactObserver::class);
+        //TODO: create topup observer
     }
 
     protected function publishConfigs()
@@ -90,6 +92,11 @@ class MissiveServiceProvider extends ServiceProvider
             if (! class_exists(CreateAirtimesTable::class)) {
                 $this->publishes([
                     self::PACKAGE_AIRTIMES_TABLE_MIGRATION_STUB => database_path('migrations/'.date('Y_m_d_His', time()+60).'_create_airtimes_table.php'),
+                ], 'missive-migrations');
+            }
+            if (! class_exists(CreateTopupsTable::class)) {
+                $this->publishes([
+                    self::PACKAGE_TOPUPS_TABLE_MIGRATION_STUB => database_path('migrations/'.date('Y_m_d_His', time()+60).'_create_topups_table.php'),
                 ], 'missive-migrations');
             }
         }
@@ -125,6 +132,7 @@ class MissiveServiceProvider extends ServiceProvider
         $this->app->bind(RelayRepository::class, RelayRepositoryEloquent::class);
         $this->app->bind(ContactRepository::class, ContactRepositoryEloquent::class);
         $this->app->bind(AirtimeRepository::class, AirtimeRepositoryEloquent::class);
+        //TODO: create topup repository
     }
 
     protected function registerModels()
@@ -143,6 +151,10 @@ class MissiveServiceProvider extends ServiceProvider
         });
         $this->app->singleton('missive.airtime', function () {
             $class = config('missive.classes.models.airtime', Airtime::class);
+            return new $class;
+        });
+        $this->app->singleton('missive.topup', function () {
+            $class = config('missive.classes.models.topup', Topup::class);
             return new $class;
         });
     }

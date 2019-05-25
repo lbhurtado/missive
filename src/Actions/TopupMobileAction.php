@@ -7,7 +7,7 @@ use LBHurtado\Missive\Validators\CreateSMSValidator;
 use LBHurtado\Missive\Responders\CreateSMSResponder;
 use LBHurtado\Missive\Actions\Middleware\TopupMobileHandler;
 
-class VerifyContactAction extends CreateSMSAction implements ActionInterface
+class TopupMobileAction extends CreateSMSAction implements ActionInterface
 {
     protected $middlewares = [
         CreateSMSValidator::class,
@@ -17,6 +17,6 @@ class VerifyContactAction extends CreateSMSAction implements ActionInterface
 
     public function getMiddlewares():array
     {
-        return config('missive.classes.middlewares.sms.verify', $this->middlewares);
+        return config('missive.classes.middlewares.sms.topup', $this->middlewares);
     }
 }
