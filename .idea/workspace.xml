@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8fcbc382-ba39-4f0d-a684-c752c9d8f5e6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/tactician.fields.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/__tactician.fields.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MissiveServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MissiveServiceProvider.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,28 +16,61 @@
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MissiveServiceProvider.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="522">
-              <caret line="183" selection-start-line="183" selection-end-line="185" selection-end-column="11" />
+            <state relative-caret-position="459">
+              <caret line="27" column="68" selection-start-line="27" selection-start-column="68" selection-end-line="27" selection-end-column="68" />
               <folding>
                 <element signature="e#37#69#0#PHP" expanded="true" />
+                <element signature="e#3076#4692#0#PHP" />
+                <element signature="e#4698#4960#0#PHP" />
+                <element signature="e#4966#5216#0#PHP" />
+                <element signature="e#5440#5865#0#PHP" />
+                <element signature="e#5871#6819#0#PHP" />
+                <element signature="e#6825#7073#0#PHP" />
+                <element signature="e#7079#7383#0#PHP" />
+                <element signature="e#7389#7780#0#PHP" />
+                <element signature="e#7786#7911#0#PHP" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/TestCase.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
+            <state relative-caret-position="289">
               <caret line="44" selection-start-line="44" selection-end-line="49" selection-end-column="5" />
               <folding>
                 <element signature="e#43#81#0#PHP" expanded="true" />
                 <element signature="e#414#1273#0#PHP" />
                 <element signature="e#1279#1514#0#PHP" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="3383">
+                <caret line="199" column="34" selection-start-line="199" selection-start-column="34" selection-end-line="199" selection-end-column="34" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Actions/Middleware/TopupMobileHandler.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="57" selection-start-line="10" selection-start-column="57" selection-end-line="10" selection-end-column="66" />
+              <folding>
+                <element signature="e#56#83#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -58,6 +92,8 @@
       <find>Contact</find>
       <find>incoming-sms</find>
       <find>2</find>
+      <find>preg_match</find>
+      <find>PACKAGE_TACTICIAN_FIELDS_CONFIG</find>
     </findStrings>
     <replaceStrings>
       <replace>Relay</replace>
@@ -122,8 +158,8 @@
         <option value="$PROJECT_DIR$/src/Missive.php" />
         <option value="$PROJECT_DIR$/config/config.php" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/src/MissiveServiceProvider.php" />
         <option value="$PROJECT_DIR$/CHANGELOG.md" />
+        <option value="$PROJECT_DIR$/src/MissiveServiceProvider.php" />
       </list>
     </option>
   </component>
@@ -231,6 +267,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -259,16 +296,10 @@
               <item name="Missive" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Missive" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Missive" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -326,11 +357,14 @@
       <workItem from="1558535540520" duration="57150000" />
       <workItem from="1558751424400" duration="10009000" />
       <workItem from="1558855973916" duration="822000" />
+      <workItem from="1559055343366" duration="60000" />
+      <workItem from="1559090536556" duration="704000" />
+      <workItem from="1559128058604" duration="1258000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="232301000" />
+    <option name="totallyTimeSpent" value="234323000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -343,8 +377,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1953602" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2026862" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -369,16 +404,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Routing/Router.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="53" column="20" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
-          <folding>
-            <element signature="e#45#75#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/seeds/AirtimeSeeder.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -744,16 +769,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="640">
-            <caret line="199" column="34" selection-start-line="199" selection-start-column="34" selection-end-line="199" selection-end-column="34" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/config.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-71">
@@ -788,10 +803,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tests/TestCase.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="44" selection-start-line="44" selection-end-line="49" selection-end-column="5" />
+          <folding>
+            <element signature="e#43#81#0#PHP" expanded="true" />
+            <element signature="e#414#1273#0#PHP" />
+            <element signature="e#1279#1514#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="3383">
+            <caret line="199" column="34" selection-start-line="199" selection-start-column="34" selection-end-line="199" selection-end-column="34" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/__tactician.fields.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Actions/Middleware/TopupMobileHandler.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="24" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="24" />
+        <state relative-caret-position="170">
+          <caret line="10" column="57" selection-start-line="10" selection-start-column="57" selection-end-line="10" selection-end-column="66" />
           <folding>
             <element signature="e#56#83#0#PHP" expanded="true" />
           </folding>
@@ -800,22 +844,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MissiveServiceProvider.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="183" selection-start-line="183" selection-end-line="185" selection-end-column="11" />
+        <state relative-caret-position="459">
+          <caret line="27" column="68" selection-start-line="27" selection-start-column="68" selection-end-line="27" selection-end-column="68" />
           <folding>
             <element signature="e#37#69#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/TestCase.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="44" selection-start-line="44" selection-end-line="49" selection-end-column="5" />
-          <folding>
-            <element signature="e#43#81#0#PHP" expanded="true" />
-            <element signature="e#414#1273#0#PHP" />
-            <element signature="e#1279#1514#0#PHP" />
+            <element signature="e#3076#4692#0#PHP" />
+            <element signature="e#4698#4960#0#PHP" />
+            <element signature="e#4966#5216#0#PHP" />
+            <element signature="e#5440#5865#0#PHP" />
+            <element signature="e#5871#6819#0#PHP" />
+            <element signature="e#6825#7073#0#PHP" />
+            <element signature="e#7079#7383#0#PHP" />
+            <element signature="e#7389#7780#0#PHP" />
+            <element signature="e#7786#7911#0#PHP" />
           </folding>
         </state>
       </provider>

@@ -24,7 +24,7 @@ class MissiveServiceProvider extends ServiceProvider
     const PACKAGE_FACTORY_DIR = __DIR__ . '/../database/factories';
     const PACKAGE_MISSIVE_CONFIG = __DIR__.'/../config/config.php';
     const PACKAGE_AIRTIME_SEEDER = __DIR__.'/../database/seeds/AirtimeSeeder.php';
-    const PACKAGE_TACTICIAN_FIELDS_CONFIG = __DIR__.'/../config/tactician.fields.php';
+//    const PACKAGE_TACTICIAN_FIELDS_CONFIG = __DIR__ . '/../config/tactician.fields.php';
     const PACKAGE_SMSS_TABLE_MIGRATION_STUB = __DIR__.'/../database/migrations/create_s_m_s_s_table.php.stub';
     const PACKAGE_RELAYS_TABLE_MIGRATION_STUB = __DIR__.'/../database/migrations/create_relays_table.php.stub';
     const PACKAGE_CONTACTS_TABLE_MIGRATION_STUB = __DIR__.'/../database/migrations/create_contacts_table.php.stub';
@@ -123,7 +123,7 @@ class MissiveServiceProvider extends ServiceProvider
     protected function registerConfigs()
     {
         $this->mergeConfigFrom(self::PACKAGE_MISSIVE_CONFIG, 'missive');
-        $this->mergeConfigFrom(self::PACKAGE_TACTICIAN_FIELDS_CONFIG, 'tactician.fields');
+//        $this->mergeConfigFrom(self::PACKAGE_TACTICIAN_FIELDS_CONFIG, 'tactician.fields');
     }
 
     protected function registerRepositories()
