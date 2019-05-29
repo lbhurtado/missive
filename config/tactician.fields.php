@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'origin' => 'required',
-    'destination' => 'required',
-    'body' => 'string|max:800'
+    'from' => 'required',
+    'to' => 'required',
+    'message' => 'string|max:800'
 ];

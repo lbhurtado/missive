@@ -56,14 +56,14 @@ return [
         'default' => env('MISSIVE_RELAY', 'local'),
         'providers' => [
             'local' => [
-                'origin' => 'from',
-                'destination' => 'to',
-                'body' => 'message',
+                'from' => 'from',
+                'to' => 'to',
+                'message' => 'message',
             ],
             'telerivet' => [
-                'origin' => 'from_number',
-                'destination' => 'to_number',
-                'body' => 'content',
+                'from' => 'from_number',
+                'to' => 'to_number',
+                'message' => 'content',
             ],
         ],
     ],
