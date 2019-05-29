@@ -30,7 +30,7 @@ class CreateSMSHandler implements HandlerInterface
             $attributes = [];
             $properties = $command->getProperties();
             foreach ($fields as $field) {
-                $attributes[$field] = $properties[$field];
+                $attributes[$field] = $properties[$mapping[$field]];
             }
 
             return $attributes;
