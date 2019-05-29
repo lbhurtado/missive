@@ -46,4 +46,11 @@ class CreateSMSAction extends ActionAbstract implements ActionInterface
     {
         return config('missive.classes.middlewares.sms.relay', $this->middlewares);
     }
+
+    public function getFields(): array
+    {
+        return optional(config('missive.relay.providers')[config('missive.relay.default')], function ($mapping) {
+            return array_keys(array_flip($mapping));
+        });
+    }
 }

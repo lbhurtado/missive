@@ -28,6 +28,15 @@ class CreateSMSActionTest extends TestCase
     /** @test */
     public function action_ultimately_creates_an_sms_when_invoked()
     {
+//        dd( optional(config('missive.relay.providers')[config('missive.relay.default')], function ($mapping) {
+//            $va = config('tactician.fields');
+//            $ar = array_flip($mapping);
+//            foreach ($ar as $key=>$value) {
+//                $ar[$key] = $va[$value];
+//            }
+//            return $ar;
+//        }));
+
         /*** arrange ***/
         $from = '+639171234567'; $to = '+639187654321'; $message = 'Test Messages';
         $request = Request::create('/api/sms/relay', 'POST', $attributes = compact('from', 'to', 'message'));
