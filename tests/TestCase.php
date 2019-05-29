@@ -5,6 +5,7 @@ namespace LBHurtado\Missive\Tests;
 use LBHurtado\Missive\Facades\Missive;
 use LBHurtado\Missive\MissiveServiceProvider;
 use LBHurtado\Missive\Actions\CreateSMSAction;
+use LBHurtado\Tactician\TacticianServiceProvider;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 use Spatie\SchemalessAttributes\SchemalessAttributesServiceProvider;
 use Joselfonseca\LaravelTactician\Providers\LaravelTacticianServiceProvider;
@@ -39,6 +40,7 @@ class TestCase extends BaseTestCase
             MissiveServiceProvider::class,
             LaravelTacticianServiceProvider::class,
             SchemalessAttributesServiceProvider::class,
+            TacticianServiceProvider::class,
         ];
     }
 

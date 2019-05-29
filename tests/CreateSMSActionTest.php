@@ -5,7 +5,7 @@ namespace LBHurtado\Missive\Tests;
 use Opis\Events\EventDispatcher;
 use Illuminate\Support\Facades\Request;
 use LBHurtado\Missive\Actions\CreateSMSAction;
-use LBHurtado\Missive\Models\{Airtime, Contact};
+use LBHurtado\Missive\Models\{Airtime, Contact, SMS};
 use Joselfonseca\LaravelTactician\CommandBusInterface;
 use LBHurtado\Missive\Actions\Middleware\ChargeSMSMiddleware;
 
