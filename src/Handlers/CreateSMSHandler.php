@@ -19,10 +19,20 @@ class CreateSMSHandler implements HandlerInterface
 
     public function handle(CommandInterface $command)
     {
-        $fields = array_values((new SMS)->getFillable());
-        $values = array_values($command->getProperties());
-        $attributes = array_combine($fields, $values);
+        $this->smss->create($this->getAttributes($command));
+    }
 
-        $this->smss->create($attributes);
+    protected function getAttributes(CommandInterface $command)
+    {
+        $fields = array_values((new SMS)->getFillable());
+
+        return optional(array_flip(config('missive.relay.providers')[config('missive.relay.default')]), function ($mapping) use ($command, $fields) {
+            $attributes = [];
+            foreach ($fields as $field) {
+                $attributes[$field] = $command->getProperties()[$field];
+            }
+
+            return $attributes;
+        });
     }
 }
