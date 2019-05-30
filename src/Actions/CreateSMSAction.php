@@ -2,6 +2,7 @@
 
 namespace LBHurtado\Missive\Actions;
 
+use LBHurtado\Missive\Facades\Missive;
 use LBHurtado\Missive\Classes\SMSAbstract;
 use LBHurtado\Tactician\Classes\ActionAbstract;
 use LBHurtado\Tactician\Contracts\ActionInterface;
@@ -32,24 +33,47 @@ class CreateSMSAction extends ActionAbstract implements ActionInterface
         });
     }
 
-    public function getCommand():string
+    public function getCommand(): string
     {
         return config('missive.classes.commands.sms.create', $this->command);
     }
 
-    public function getHandler():string
+    public function getHandler(): string
     {
         return config('missive.classes.handlers.sms.create', $this->handler);
     }
 
-    public function getMiddlewares():array
+    public function getMiddlewares(): array
     {
         return config('missive.classes.middlewares.sms.relay', $this->middlewares);
     }
 
+    /**
+     * Extract the values in the associative array in config('missive.relay').
+     *
+     * The following array array
+     *
+     *  [
+     *      'from' => 'from_number',
+     *      'to' => 'to_number',
+     *      'message' => 'content',
+     *  ]
+     *
+     * becomes
+     *
+     *  [
+     *      'from_number',
+     *      'to_number',
+     *      'content',
+     *  ]
+     *
+     * which is needed as properties of the command required by the tactician package
+     *
+     * @return array
+     */
     public function getFields(): array
     {
-        return optional(config('missive.relay.providers')[config('missive.relay.default')], function ($mapping) {
+        return optional(Missive::getRelayProviderConfig(), function ($mapping) {
             return array_keys(array_flip($mapping));
         });
     }

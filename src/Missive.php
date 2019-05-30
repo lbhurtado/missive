@@ -2,7 +2,6 @@
 
 namespace LBHurtado\Missive;
 
-use Illuminate\Support\Arr;
 use LBHurtado\Missive\Models\Topup;
 use LBHurtado\Missive\Models\Contact;
 use LBHurtado\Missive\Types\ChargeType;
@@ -75,6 +74,9 @@ class Missive
         return $this;
     }
 
+    /**
+     * @param array $attributes
+     */
     public function topupMobile(array $attributes)
     {
         $mobile = $attributes['mobile'];
@@ -83,6 +85,59 @@ class Missive
         //TODO: create a separate package for SMS Driver Manager
         tap(Contact::create(compact('mobile')), function ($contact) use ($amount) {
             Topup::make(compact( 'amount'))->contact()->associate($contact)->save();
+        });
+    }
+
+    /**
+     * Extract the associative array in config('missive.relay')
+     * to be used for default relay configuration e.g.
+     *
+     *  [
+     *      'from' => 'from_number',
+     *      'to' => 'to_number',
+     *      'message' => 'content',
+     *  ]
+     *
+     * @return array
+     */
+    public function getRelayProviderConfig(): array
+    {
+        return config('missive.relay.providers')[config('missive.relay.default')];
+    }
+
+    /**
+     * Extract the associative array in config('tactician.fields')
+     * and "merge: it with the relay provider config to be used for validation e.g.
+     *
+     * from
+     *
+     *  [
+     *      'from' => 'required',
+     *      'to' => 'required',
+     *      'message' => 'string|max:800',
+     *  ]
+     *
+     * to
+     *
+     *  [
+     *      'from_number' => 'required',
+     *      'to_number' => 'required',
+     *      'content' => 'string|max:800',
+     *  ]
+     *
+     * @return array
+     */
+    public function getRelayRules(): array
+    {
+        $relayRules = config('tactician.fields');
+
+        return optional(array_flip($this->getRelayProviderConfig()), function ($mapping) use ($relayRules) {
+            $rules = [];
+            foreach ($mapping as $field => $rule) {
+                $rules[$field] = $relayRules[$rule];
+            }
+
+            return $rules;
         });
     }
 
