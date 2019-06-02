@@ -3,15 +3,19 @@
 namespace LBHurtado\Missive\Tests;
 
 use LBHurtado\Missive\Facades\Missive;
+use Illuminate\Foundation\Testing\WithFaker;
 use LBHurtado\Missive\MissiveServiceProvider;
 use LBHurtado\Missive\Actions\CreateSMSAction;
 use LBHurtado\Tactician\TacticianServiceProvider;
 use Orchestra\Testbench\TestCase as BaseTestCase;
+use Propaganistas\LaravelPhone\PhoneServiceProvider;
 use Spatie\SchemalessAttributes\SchemalessAttributesServiceProvider;
 use Joselfonseca\LaravelTactician\Providers\LaravelTacticianServiceProvider;
 
 class TestCase extends BaseTestCase
 {
+    use WithFaker;
+
     public function setUp(): void
     {
         parent::setUp();
@@ -32,6 +36,8 @@ class TestCase extends BaseTestCase
         (new \AirtimeSeeder)->run();
 
         require_once __DIR__.'/../routes/api.php';
+
+        $this->faker = $this->makeFaker('en_PH');
     }
 
     protected function getPackageProviders($app)
@@ -41,6 +47,7 @@ class TestCase extends BaseTestCase
             LaravelTacticianServiceProvider::class,
             SchemalessAttributesServiceProvider::class,
             TacticianServiceProvider::class,
+            PhoneServiceProvider::class,
         ];
     }
 
@@ -60,5 +67,10 @@ class TestCase extends BaseTestCase
             'prefix'   => '',
         ]);
         $app['router']->resource('api/sms/relay', CreateSMSAction::class);
+    }
+
+    protected function newFakeMobile()
+    {
+        return $this->faker->mobileNumber;
     }
 }

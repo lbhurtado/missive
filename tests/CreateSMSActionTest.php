@@ -5,9 +5,11 @@ namespace LBHurtado\Missive\Tests;
 use Opis\Events\EventDispatcher;
 use Illuminate\Support\Facades\Request;
 use LBHurtado\Missive\Actions\CreateSMSAction;
+use LBHurtado\Missive\Validators\CreateSMSValidator;
 use LBHurtado\Missive\Models\{Airtime, Contact, SMS};
 use Joselfonseca\LaravelTactician\CommandBusInterface;
 use LBHurtado\Missive\Actions\Middleware\ChargeSMSMiddleware;
+use LBHurtado\Missive\Exceptions\CreateSMSValidationException;
 
 class CreateSMSActionTest extends TestCase
 {
@@ -28,17 +30,8 @@ class CreateSMSActionTest extends TestCase
     /** @test */
     public function action_ultimately_creates_an_sms_when_invoked()
     {
-//        dd( optional(config('missive.relay.providers')[config('missive.relay.default')], function ($mapping) {
-//            $va = config('tactician.fields');
-//            $ar = array_flip($mapping);
-//            foreach ($ar as $key=>$value) {
-//                $ar[$key] = $va[$value];
-//            }
-//            return $ar;
-//        }));
-
         /*** arrange ***/
-        $from = '+639171234567'; $to = '+639187654321'; $message = 'Test Messages';
+        $from = $this->newFakeMobile(); $to = $this->newFakeMobile(); $message = $this->faker->sentence;
         $request = Request::create('/api/sms/relay', 'POST', $attributes = compact('from', 'to', 'message'));
 
         /*** act */
@@ -57,5 +50,61 @@ class CreateSMSActionTest extends TestCase
                 'qty' => 1
             ]);
         }
+    }
+
+    /** @test */
+    public function action_validates_from_input()
+    {
+        /*** arrange ***/
+        $from = '1234'; $to = $this->newFakeMobile(); $message = $this->faker->sentence;
+        $request = Request::create('/api/sms/relay', 'POST', $attributes = compact('from', 'to', 'message'));
+
+        /*** assert ***/
+        $this->expectException(CreateSMSValidationException::class);
+
+        /*** act */
+        (new CreateSMSAction($this->bus, $this->dispatcher, $request))->__invoke();
+    }
+
+    /** @test */
+    public function action_validates_to_input()
+    {
+        /*** arrange ***/
+        $from = $this->newFakeMobile(); $to = null; $message = $this->faker->sentence;
+        $request = Request::create('/api/sms/relay', 'POST', $attributes = compact('from', 'to', 'message'));
+
+        /*** assert ***/
+        $this->expectException(CreateSMSValidationException::class);
+
+        /*** act */
+        (new CreateSMSAction($this->bus, $this->dispatcher, $request))->__invoke();
+    }
+
+    /** @test */
+    public function action_validates_message_input_cannot_be_null()
+    {
+        /*** arrange ***/
+        $from = $this->newFakeMobile(); $to = $this->newFakeMobile(); $message = null;
+        $request = Request::create('/api/sms/relay', 'POST', $attributes = compact('from', 'to', 'message'));
+
+        /*** assert ***/
+        $this->expectException(CreateSMSValidationException::class);
+
+        /*** act */
+        (new CreateSMSAction($this->bus, $this->dispatcher, $request))->__invoke();
+    }
+
+    /** @test */
+    public function action_validates_message_input_can_be_empty()
+    {
+        /*** arrange ***/
+        $from = $this->newFakeMobile(); $to = $this->newFakeMobile(); $message = '';
+        $request = Request::create('/api/sms/relay', 'POST', $attributes = compact('from', 'to', 'message'));
+
+        /*** act */
+        (new CreateSMSAction($this->bus, $this->dispatcher, $request))->__invoke();
+
+        /*** assert ***/
+        $this->assertDatabaseHas('s_m_s_s', $attributes);
     }
 }

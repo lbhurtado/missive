@@ -7,14 +7,17 @@ use LBHurtado\Missive\Models\SMS;
 use LBHurtado\Missive\Models\Relay;
 use LBHurtado\Missive\Models\Contact;
 use Illuminate\Database\QueryException;
+use Illuminate\Foundation\Testing\WithFaker;
 
 class SMSTest extends TestCase
 {
+    use WithFaker;
+
     /** @test */
     public function sms_model_has_from_to_messages_fields()
     {
         /*** arrange ***/
-        $from = '+639171234567'; $to = '+639187654321'; $message = 'Test Messages';
+        $from = $this->newFakeMobile(); $to = $this->newFakeMobile(); $message = 'Test Messages';
 
         /*** act ***/
         $sms = SMS::create($attributes = compact('from', 'to', 'message'));
@@ -27,7 +30,7 @@ class SMSTest extends TestCase
     public function sms_from_field_is_required()
     {
         /*** arrange ***/
-        $from = null; $to = '+639187654321'; $message = 'Test Messages';
+        $from = null; $to = $this->newFakeMobile(); $message = 'Test Messages';
 
         /*** assert ***/
         $this->expectException(QueryException::class);
@@ -40,7 +43,7 @@ class SMSTest extends TestCase
     public function sms_to_field_is_required()
     {
         /*** arrange ***/
-        $from = '+639171234567'; $to = null; $message = 'Test Messages';
+        $from = $this->newFakeMobile(); $to = null; $message = 'Test Messages';
 
         /*** assert ***/
         $this->expectException(QueryException::class);
@@ -53,7 +56,7 @@ class SMSTest extends TestCase
     public function sms_message_field_is_not_required()
     {
         /*** arrange ***/
-        $from = '+639171234567'; $to = '+639187654321'; $message = null;
+        $from = $this->newFakeMobile(); $to = $this->newFakeMobile(); $message = null;
 
         /*** act ***/
         $sms = SMS::create($attributes = compact('from', 'to', 'message'));
@@ -66,7 +69,7 @@ class SMSTest extends TestCase
     public function sms_has_model_factory()
     {
         /*** arrange ***/
-        $from = '+639171234567';
+        $from = $this->newFakeMobile();
 
         /*** act ***/
         $sms = factory(SMS::class)->create($attributes = compact('from'));
@@ -79,7 +82,7 @@ class SMSTest extends TestCase
     public function sms_has_origin_relation_as_contact()
     {
         /*** arrange ***/
-        $mobile = $from = '+639171234567';
+        $mobile = $from = $this->newFakeMobile();
 
         /*** act ***/
         $sms = factory(SMS::class)->create($attributes = compact('from'));
@@ -93,7 +96,7 @@ class SMSTest extends TestCase
     public function sms_has_destination_relation_as_relay()
     {
         /*** arrange ***/
-        $mobile = $to = '+639171234567';
+        $mobile = $to = $this->newFakeMobile();
 
         /*** act ***/
         $sms = factory(SMS::class)->create($attributes = compact('to'));

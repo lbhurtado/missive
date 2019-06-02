@@ -21,6 +21,7 @@
         "php": "^7.2",
         "eloquent/enumeration": "^6.0",
         "illuminate/support": "5.8.*",
+        "lbhurtado/common": "^1.1",
         "lbhurtado/tactician": "^1.0",
         "prettus/l5-repository": "^2.6",
         "spatie/laravel-schemaless-attributes": "^1.4",
