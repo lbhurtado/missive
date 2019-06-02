@@ -31,7 +31,7 @@ class CreateSMSActionTest extends TestCase
     public function action_ultimately_creates_an_sms_when_invoked()
     {
         /*** arrange ***/
-        $from = $this->newFakeMobile(); $to = $this->newFakeMobile(); $message = $this->faker->sentence;
+        $from = '09171234567'; $to = '09187654321'; $message = $this->faker->sentence;
         $request = Request::create('/api/sms/relay', 'POST', $attributes = compact('from', 'to', 'message'));
 
         /*** act */
@@ -39,7 +39,11 @@ class CreateSMSActionTest extends TestCase
         $response = $action->__invoke();
 
         /*** assert ***/
-        $this->assertDatabaseHas('s_m_s_s', $attributes);
+        $this->assertDatabaseHas('s_m_s_s', [
+            'from' => '+639171234567',
+            'to' => '+639187654321',
+            'message' => $message
+        ]);
 
         //TODO: test $response
 
@@ -56,7 +60,7 @@ class CreateSMSActionTest extends TestCase
     public function action_validates_from_input()
     {
         /*** arrange ***/
-        $from = '1234'; $to = $this->newFakeMobile(); $message = $this->faker->sentence;
+        $from = '1234'; $to = '+639187654321'; $message = $this->faker->sentence;
         $request = Request::create('/api/sms/relay', 'POST', $attributes = compact('from', 'to', 'message'));
 
         /*** assert ***/
@@ -70,7 +74,7 @@ class CreateSMSActionTest extends TestCase
     public function action_validates_to_input()
     {
         /*** arrange ***/
-        $from = $this->newFakeMobile(); $to = null; $message = $this->faker->sentence;
+        $from = '+639171234567'; $to = null; $message = $this->faker->sentence;
         $request = Request::create('/api/sms/relay', 'POST', $attributes = compact('from', 'to', 'message'));
 
         /*** assert ***/
@@ -84,7 +88,7 @@ class CreateSMSActionTest extends TestCase
     public function action_validates_message_input_cannot_be_null()
     {
         /*** arrange ***/
-        $from = $this->newFakeMobile(); $to = $this->newFakeMobile(); $message = null;
+        $from = '+639171234567'; $to = '+639187654321'; $message = null;
         $request = Request::create('/api/sms/relay', 'POST', $attributes = compact('from', 'to', 'message'));
 
         /*** assert ***/
@@ -98,7 +102,7 @@ class CreateSMSActionTest extends TestCase
     public function action_validates_message_input_can_be_empty()
     {
         /*** arrange ***/
-        $from = $this->newFakeMobile(); $to = $this->newFakeMobile(); $message = '';
+        $from = '+639171234567'; $to = '+639187654321'; $message = '';
         $request = Request::create('/api/sms/relay', 'POST', $attributes = compact('from', 'to', 'message'));
 
         /*** act */

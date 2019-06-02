@@ -23,7 +23,7 @@ class CreateSMSValidatorTest extends TestCase
     public function command_from_field_cannot_be_null()
     {
         /*** arrange ***/
-        $from = null; $to = $this->newFakeMobile(); $message = 'Test Messages';
+        $from = null; $to = '+639187654321'; $message = 'Test Messages';
         $attributes = compact('from', 'to', 'message');
 
         /*** act */
@@ -39,7 +39,7 @@ class CreateSMSValidatorTest extends TestCase
     public function command_from_field_cannot_be_empty()
     {
         /*** arrange ***/
-        $from = ''; $to = $this->newFakeMobile(); $message = 'Test Messages';
+        $from = ''; $to = '+639187654321'; $message = 'Test Messages';
         $attributes = compact('from', 'to', 'message');
 
         /*** act */
@@ -55,7 +55,7 @@ class CreateSMSValidatorTest extends TestCase
     public function command_to_field_cannot_be_null()
     {
         /*** arrange ***/
-        $from = $this->newFakeMobile(); $to = null; $message = 'Test Messages';
+        $from = '+639171234567'; $to = null; $message = 'Test Messages';
         $attributes = compact('from', 'to', 'message');
 
         /*** act */
@@ -71,7 +71,7 @@ class CreateSMSValidatorTest extends TestCase
     public function command_to_field_cannot_be_empty()
     {
         /*** arrange ***/
-        $from = $this->newFakeMobile(); $to = null; $message = 'Test Messages';
+        $from = '+639171234567'; $to = null; $message = 'Test Messages';
         $attributes = compact('from', 'to', 'message');
 
         /*** act */
@@ -87,7 +87,7 @@ class CreateSMSValidatorTest extends TestCase
     public function command_message_field_cannot_be_null()
     {
         /*** arrange ***/
-        $from = $this->newFakeMobile(); $to = $this->newFakeMobile(); $message = null;
+        $from = '+639171234567'; $to = '+639187654321'; $message = null;
         $attributes = compact('from', 'to', 'message');
 
         /*** act */
@@ -103,7 +103,7 @@ class CreateSMSValidatorTest extends TestCase
     public function command_message_field_can_be_empty()
     {
         /*** arrange ***/
-        $from = $this->newFakeMobile(); $to = $this->newFakeMobile(); $message = '';
+        $from = '+639171234567'; $to = '+639187654321'; $message = '';
         $attributes = compact('from', 'to', 'message');
 
         /*** act */
@@ -118,7 +118,7 @@ class CreateSMSValidatorTest extends TestCase
     public function command_message_field_can_have_800_chars()
     {
         /*** arrange ***/
-        $from = $this->newFakeMobile(); $to = $this->newFakeMobile(); $message = Str::random(800);
+        $from = '+639171234567'; $to = '+639187654321'; $message = Str::random(800);
         $attributes = compact('from', 'to', 'message');
 
         /*** act */
@@ -133,7 +133,7 @@ class CreateSMSValidatorTest extends TestCase
     public function command_message_field_cannot_have_more_than_800_chars()
     {
         /*** arrange ***/
-        $from = $this->newFakeMobile(); $to = $this->newFakeMobile(); $message = Str::random(801);
+        $from = '+639171234567'; $to = '+639187654321'; $message = Str::random(801);
         $attributes = compact('from', 'to', 'message');
 
         /*** act */

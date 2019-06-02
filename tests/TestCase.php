@@ -68,9 +68,4 @@ class TestCase extends BaseTestCase
         ]);
         $app['router']->resource('api/sms/relay', CreateSMSAction::class);
     }
-
-    protected function newFakeMobile()
-    {
-        return $this->faker->mobileNumber;
-    }
 }

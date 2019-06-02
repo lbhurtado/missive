@@ -34,6 +34,7 @@ return [
             'sms' => [
                 'relay' => [
                     \LBHurtado\Missive\Validators\CreateSMSValidator::class,
+                    \LBHurtado\Missive\Transforms\CreateSMSTransform::class,
                     \LBHurtado\Missive\Responders\CreateSMSResponder::class,
 //                \LBHurtado\Missive\Actions\Middleware\ChargeSMSMiddleware::class,
                 ],

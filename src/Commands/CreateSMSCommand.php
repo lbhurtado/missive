@@ -18,7 +18,7 @@ class CreateSMSCommand implements CommandInterface
         return $this->properties;
     }
 
-    protected function setPropertiesForValidation($data)
+    public function setPropertiesForValidation($data)
     {
         foreach ($this->properties = $data as $property => $value) {
             $this->{$property} = $value;
