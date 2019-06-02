@@ -67,5 +67,17 @@ class TestCase extends BaseTestCase
             'prefix'   => '',
         ]);
         $app['router']->resource('api/sms/relay', CreateSMSAction::class);
+        // $app['config']->set('missive.relay.default', 'telerivet');
+    }
+
+    public function array_replace_keys($data, $mapping)
+    {
+        $replaced = [];
+
+        foreach ($mapping as $key => $value) {
+            $replaced[$key] = $data[$value];
+        }
+
+        return $replaced;
     }
 }
