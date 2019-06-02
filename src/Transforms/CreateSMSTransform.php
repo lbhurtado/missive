@@ -17,17 +17,17 @@ class CreateSMSTransform implements Middleware
 
     public function transform(array $attributes)
     {
-        $merged = array_merge($attributes, [
+        $transformer = [
             'from' => phone($attributes['from'], 'PH')->formatE164(),
             'to' => phone($attributes['to'], 'PH')->formatE164(),
             'message' => trim($attributes['message']),
-        ]);
+        ];
+        $mapped_transformer = [];
         $mapping = array_flip(Missive::getRelayProviderConfig());
-        $data = [];
         foreach ($mapping as $key => $value) {
-        	$data[$key] = $merged[$value];
+        	$mapped_transformer[$key] = $transformer[$value];
         }
 
-        return $data;
+        return array_merge($attributes, $mapped_transformer);
     }
 }
