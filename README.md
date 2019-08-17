@@ -18,6 +18,7 @@ composer require lbhurtado/missive
 publish vendor files:
 ```bash
 php artisan vendor:publish --provider="LBHurtado\Missive\MissiveServiceProvider"
+php artisan notifications:table
 php artisan migrate
 
 
