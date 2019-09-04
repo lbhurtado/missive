@@ -5,6 +5,7 @@ namespace LBHurtado\Missive\Routing;
 use Closure;
 use Opis\Pattern\RegexBuilder;
 use LBHurtado\Missive\Missive;
+use Psr\Container\ContainerInterface;
 use LBHurtado\Missive\Classes\SMSAbstract;
 
 class Router
@@ -17,6 +18,9 @@ class Router
 
     /** @var \LBHurtado\Missive\Missive */
     public $missive;
+
+    /** @var ContainerInterface */
+    protected $container;
 
     /**
      * Router constructor.
@@ -125,5 +129,13 @@ class Router
         $command = $this->container ? $this->container->get($class) : new $class($this);
 
         return [$command, $method];
+    }
+
+    /**
+     * @param ContainerInterface $container
+     */
+    public function setContainer(ContainerInterface $container)
+    {
+        $this->container = $container;
     }
 }

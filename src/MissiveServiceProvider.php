@@ -5,6 +5,7 @@ namespace LBHurtado\Missive;
 use Opis\Events\EventDispatcher;
 use LBHurtado\Missive\Routing\Router;
 use Illuminate\Support\ServiceProvider;
+use LBHurtado\Missive\Container\LaravelContainer;
 use LBHurtado\Missive\Models\{SMS, Contact, Relay, Airtime, Topup};
 use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 use LBHurtado\Missive\Repositories\{SMSRepository, SMSRepositoryEloquent};
@@ -173,7 +174,10 @@ class MissiveServiceProvider extends ServiceProvider
             return new Missive(app(AirtimeRepository::class));
         });
         $this->app->singleton('missive:router', function () {
-            return new Router(app(Missive::class));
+            $router = new Router(app(Missive::class));
+            $router->setContainer(new LaravelContainer($this->app));
+
+            return $router;
         });
     }
 
