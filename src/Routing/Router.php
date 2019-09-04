@@ -2,6 +2,7 @@
 
 namespace LBHurtado\Missive\Routing;
 
+use Closure;
 use Opis\Pattern\RegexBuilder;
 use LBHurtado\Missive\Missive;
 use LBHurtado\Missive\Classes\SMSAbstract;
@@ -34,13 +35,14 @@ class Router
 
     /**
      * @param string $route
-     * @param callable $action
+     * @param string|callable $action
      * @return Router
      */
-    public function register(string $route, callable $action): self
+    public function register(string $route, $action): self
     {
         $regex = $this->builder->getRegex($route);
-        $this->routes[$regex] = $action;
+        $callable = $this->getCallable($action);
+        $this->routes[$regex] = $callable;
 
         return $this;
     }
@@ -78,5 +80,50 @@ class Router
         }
 
         return false;
+    }
+
+    /**
+     * Make an action for an invokable controller.
+     *
+     * @param string $action
+     * @return string
+     * @throws UnexpectedValueException
+     */
+    protected function makeInvokableAction($action)
+    {
+        if (! method_exists($action, '__invoke')) {
+            throw new UnexpectedValueException(sprintf(
+                'Invalid hears action: [%s]', $action
+            ));
+        }
+
+        return $action.'@__invoke';
+    }
+
+    /**
+     * @param $callback
+     * @return array|string|Closure
+     * @throws UnexpectedValueException
+     * @throws NotFoundExceptionInterface
+     */
+    protected function getCallable($callback)
+    {
+        if ($callback instanceof Closure) {
+            return $callback;
+        }
+
+        if (\is_array($callback)) {
+            return $callback;
+        }
+
+        if (strpos($callback, '@') === false) {
+            $callback = $this->makeInvokableAction($callback);
+        }
+
+        list($class, $method) = explode('@', $callback);
+
+        $command = $this->container ? $this->container->get($class) : new $class($this);
+
+        return [$command, $method];
     }
 }
