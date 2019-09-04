@@ -120,6 +120,10 @@ class Router
             return $callback;
         }
 
+        if (\is_object($callback)) {
+            return $callback;
+        }
+
         if (strpos($callback, '@') === false) {
             $callback = $this->makeInvokableAction($callback);
         }
