@@ -2,7 +2,9 @@
 
 namespace LBHurtado\Missive\Routing;
 
+use DB;
 use Closure;
+use Exception;
 use Opis\Pattern\RegexBuilder;
 use LBHurtado\Missive\Missive;
 use Psr\Container\ContainerInterface;
@@ -74,7 +76,7 @@ class Router
         foreach ($ordered_routes as $regex => $action) {
             if ($this->builder->matches($regex, $path)) {
                 $values = $this->builder->getValues($regex, $path);
-                $data = $action($path, $values);
+                $data = $this->do($path, $values);
                 if ($data === false) {
                     continue;
                 }
@@ -84,6 +86,22 @@ class Router
         }
 
         return false;
+    }
+
+    protected function do($action, $path, $values)
+    {
+        $data = false;
+
+        DB::beginTransaction();
+        try {
+            $data = $action($path, $values);
+        }
+        catch (Exception $e) {
+            DB::rollBack();
+        }
+        DB::commit();
+
+        return $data;
     }
 
     /**
