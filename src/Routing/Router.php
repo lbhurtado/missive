@@ -9,7 +9,6 @@ use Opis\Pattern\RegexBuilder;
 use LBHurtado\Missive\Missive;
 use Psr\Container\ContainerInterface;
 use LBHurtado\Missive\Classes\SMSAbstract;
-use LBHurtado\Missive\Exceptions\MissiveRouterException;
 
 class Router
 {
@@ -118,7 +117,6 @@ class Router
             DB::rollBack();
 
             throw $e;
-//            throw new MissiveRouterException('Error in executing action!');
         }
         DB::commit();
 
