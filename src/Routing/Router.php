@@ -9,6 +9,7 @@ use Opis\Pattern\RegexBuilder;
 use LBHurtado\Missive\Missive;
 use Psr\Container\ContainerInterface;
 use LBHurtado\Missive\Classes\SMSAbstract;
+use LBHurtado\Missive\Exceptions\MissiveRouterException;
 
 class Router
 {
@@ -28,6 +29,7 @@ class Router
      * Router constructor.
      * Capture the Missive instance from the container.
      * Instantiate RegexBuilder that ignores casing.
+     *
      * @param Missive $missive
      */
     public function __construct(Missive $missive)
@@ -56,8 +58,10 @@ class Router
     /**
      * Sets the SMS property of Missive before
      * executing the contents of them sms
+     *
      * @param SMSAbstract $sms
-     * @return mixed
+     * @return bool
+     * @throws MissiveRouterException
      */
     public function process(SMSAbstract $sms)
     {
@@ -66,9 +70,14 @@ class Router
         return $this->execute($this->missive->getSMS()->getMessage());
     }
 
+
     /**
+     * Return true if handled.
+     * Otherwise, send to next route.
+     * 
      * @param string $path
-     * @return mixed
+     * @return bool
+     * @throws MissiveRouterException
      */
     public function execute(string $path)
     {
@@ -88,6 +97,15 @@ class Router
         return false;
     }
 
+    /**
+     * Make sure to rollback the database if an error occurs.
+     *
+     * @param $action
+     * @param $path
+     * @param $values
+     * @return bool
+     * @throws MissiveRouterException
+     */
     protected function do($action, $path, $values)
     {
         $data = false;
@@ -98,6 +116,8 @@ class Router
         }
         catch (Exception $e) {
             DB::rollBack();
+
+            throw new MissiveRouterException('Error in executing action@');
         }
         DB::commit();
 
