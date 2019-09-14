@@ -76,7 +76,7 @@ class Router
         foreach ($ordered_routes as $regex => $action) {
             if ($this->builder->matches($regex, $path)) {
                 $values = $this->builder->getValues($regex, $path);
-                $data = $this->do($path, $values);
+                $data = $this->do($action, $path, $values);
                 if ($data === false) {
                     continue;
                 }
