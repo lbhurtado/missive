@@ -61,7 +61,7 @@ class Router
      *
      * @param SMSAbstract $sms
      * @return bool
-     * @throws MissiveRouterException
+     * @throws Exception
      */
     public function process(SMSAbstract $sms)
     {
@@ -74,10 +74,10 @@ class Router
     /**
      * Return true if handled.
      * Otherwise, send to next route.
-     * 
+     *
      * @param string $path
      * @return bool
-     * @throws MissiveRouterException
+     * @throws Exception
      */
     public function execute(string $path)
     {
@@ -104,7 +104,7 @@ class Router
      * @param $path
      * @param $values
      * @return bool
-     * @throws MissiveRouterException
+     * @throws Exception
      */
     protected function do($action, $path, $values)
     {
@@ -117,7 +117,8 @@ class Router
         catch (Exception $e) {
             DB::rollBack();
 
-            throw new MissiveRouterException('Error in executing action@');
+            throw $e;
+//            throw new MissiveRouterException('Error in executing action!');
         }
         DB::commit();
 
