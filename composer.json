@@ -20,16 +20,17 @@
     "require": {
         "php": "^7.2",
         "eloquent/enumeration": "^6.0",
-        "illuminate/support": "5.8.*",
-        "lbhurtado/common": "~1.3",
-        "lbhurtado/tactician": "^1.0",
+	"illuminate/support": "^8.0",
+	"laravel/legacy-factories": "^1.1",
+        "lbhurtado/common": "^2.0",
+        "lbhurtado/tactician": "^2.0",
         "prettus/l5-repository": "^2.6",
         "spatie/laravel-schemaless-attributes": "^1.4",
         "spomky-labs/otphp": "^10.0"
     },
     "require-dev": {
-        "orchestra/testbench-browser-kit": "^3.5",
-        "phpunit/phpunit": "^7.0"
+        "orchestra/testbench-browser-kit": "^6.2",
+        "phpunit/phpunit": "^9.3.3"
     },
     "suggest": {
         "lbhurtado/engagespark": "This package makes it easy to send SMS notifications and topups via engageSPARK with Laravel."
