@@ -18,7 +18,7 @@ use LBHurtado\Missive\Observers\{SMSObserver, ContactObserver, RelayObserver, Ai
 class MissiveServiceProvider extends ServiceProvider
 {
     const APPLICATION_ROUTE_SMS = 'routes/sms.php';
-    const APPLICATION_AIRTIME_SEEDER = 'seeds/AirtimeSeeder.php';
+    const APPLICATION_AIRTIME_SEEDER = 'seeders/AirtimeSeeder.php';
 
     const PACKAGE_ROUTE_API = __DIR__.'/../routes/api.php';
     const PACKAGE_ROUTE_SMS = __DIR__.'/../routes/sms.php';
