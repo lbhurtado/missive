@@ -68,5 +68,7 @@ return [
             ],
         ],
     ],
-
+    'otp' => [
+        'period' => env('DEFAULT_OTP_PERIOD', 60 * 60),
+    ],
 ];

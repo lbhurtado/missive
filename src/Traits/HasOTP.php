@@ -24,7 +24,8 @@ trait HasOTP
 
     public function challenge($notification = null)
     {
-        tap(TOTP::create(null, 360), function ($totp) {
+        $period = config('missive.otp.period', 10 * 60); //10 minutes
+        tap(TOTP::create(null, $period), function ($totp) {
             $this->setTOTP($totp);
         });
 

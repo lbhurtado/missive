@@ -155,6 +155,9 @@ use LBHurtado\Missive\Models\Contact;
 
 $contact = Contact::find(1);
 $otp = $contact->challenge()->now();
+//default period for OTP is 360 seconds
+//modify it in .env i.e. DEFAULT_OTP_PERIOD=1000
+
 
 if ($contact->verify($otp) == true) {
     //code here
