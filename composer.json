@@ -18,14 +18,14 @@
         }
     ],
     "require": {
-        "php": "^7.2",
+        "php": "^7.2||^8.0.1",
         "eloquent/enumeration": "^6.0",
-	"illuminate/support": "^8.0",
-	"laravel/legacy-factories": "^1.1",
+        "illuminate/support": "^8.0||^9.0",
+        "laravel/legacy-factories": "^1.1",
         "lbhurtado/common": "^2.0",
         "lbhurtado/tactician": "^2.0",
         "prettus/l5-repository": "^2.6",
-        "spatie/laravel-schemaless-attributes": "^1.4",
+        "spatie/laravel-schemaless-attributes": "^1.4||2.*",
         "spomky-labs/otphp": "^10.0"
     },
     "require-dev": {

@@ -20,14 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8fcbc382-ba39-4f0d-a684-c752c9d8f5e6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/blade.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/laravel-idea.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Missive.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Missive.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Traits/HasOTP.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Traits/HasOTP.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -243,6 +237,7 @@
       <workItem from="1567431896452" duration="1014000" />
       <workItem from="1567603285205" duration="4346000" />
       <workItem from="1609726198772" duration="1675000" />
+      <workItem from="1650074148762" duration="880000" />
     </task>
     <servers />
   </component>
@@ -268,5 +263,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
