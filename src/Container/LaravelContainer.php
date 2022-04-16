@@ -4,7 +4,8 @@ namespace LBHurtado\Missive\Container;
 
 use ReflectionException;
 use Psr\Container\ContainerInterface;
-use Illuminate\Contracts\Container\Container;
+use Illuminate\Container\Container;
+//use Illuminate\Contracts\Container\Container;
 use Psr\Container\NotFoundExceptionInterface;
 use Psr\Container\ContainerExceptionInterface;
 use Illuminate\Container\EntryNotFoundException;
@@ -48,7 +49,7 @@ class LaravelContainer implements ContainerInterface
      *
      * @return bool
      */
-    public function has($id)
+    public function has(string $id): bool
     {
         if ($this->container->bound($id) || $this->container->resolved($id)) {
             return true;
